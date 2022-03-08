@@ -1,9 +1,7 @@
 import React from 'react';
 
-function DrinkRecipe() {
+export default function DrinkRecipe() {
   return (
     <h1>DrinkRecipe</h1>
   );
 }
-
-export default DrinkRecipe;

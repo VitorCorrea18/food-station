@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 
-function Foods() {
+export default function Foods() {
   return (
     <>
       <h1>Foods</h1>
@@ -9,5 +9,3 @@ function Foods() {
     </>
   );
 }
-
-export default Foods;

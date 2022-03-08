@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 
-function Profile() {
+export default function Profile() {
   return (
     <>
       <h1>Profile</h1>
@@ -9,5 +9,3 @@ function Profile() {
     </>
   );
 }
-
-export default Profile;

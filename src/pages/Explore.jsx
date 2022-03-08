@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 
-function Explore() {
+export default function Explore() {
   return (
     <>
       <h1>Explore</h1>
@@ -9,5 +9,3 @@ function Explore() {
     </>
   );
 }
-
-export default Explore;

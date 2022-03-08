@@ -1,9 +1,7 @@
 import React from 'react';
 
-function DoneRecipes() {
+export default function DoneRecipes() {
   return (
     <h1>Done Recipes</h1>
   );
 }
-
-export default DoneRecipes;
