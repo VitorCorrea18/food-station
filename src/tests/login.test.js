@@ -124,3 +124,17 @@ describe('7 - Salve o e-mail da pessoa usuária no localStorage na chave user', 
     expect(window.localStorage.getItem('user')).toEqual(userStorage);
   });
 });
+
+describe('8 - Redirecione para a tela de receitas após a submissão', () => {
+  it('A rota muda para a tela principal de receitas de comidas', () => {
+    const { history } = renderWithRouter(<App />);
+    const emailInput = screen.getByTestId(EMAIL_INPUT);
+    const passwordInput = screen.getByTestId(PASSWORD_INPUT);
+    const btnSubmit = screen.getByTestId(BTN_SUBMIT);
+    userEvent.type(emailInput, TEST_EMAIL);
+    userEvent.type(passwordInput, TEST_PASSWORD);
+    userEvent.click(btnSubmit);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/foods');
+  });
+});
