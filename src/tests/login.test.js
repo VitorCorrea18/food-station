@@ -109,3 +109,18 @@ describe('6 - Salve no localStorage as chaves mealsToken e cocktailsToken', () =
     expect(window.localStorage.getItem('cocktailsToken')).toEqual('1');
   });
 });
+
+describe('7 - Salve o e-mail da pessoa usuária no localStorage na chave user', () => {
+  it('Após a submissão a chave user deve estar salva em localStorage', () => {
+    renderWithRouter(<App />);
+    const emailInput = screen.getByTestId(EMAIL_INPUT);
+    const passwordInput = screen.getByTestId(PASSWORD_INPUT);
+    const btnSubmit = screen.getByTestId(BTN_SUBMIT);
+    const userStorage = '{"email":"teste@teste.com"}';
+    userEvent.type(emailInput, TEST_EMAIL);
+    userEvent.type(passwordInput, TEST_PASSWORD);
+    userEvent.click(btnSubmit);
+    // fonte: https://github.com/testing-library/react-testing-library/blob/main/README.md
+    expect(window.localStorage.getItem('user')).toEqual(userStorage);
+  });
+});
