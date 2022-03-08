@@ -30,3 +30,12 @@ describe('3 - A pessoa deve conseguir escrever seu email no input de email', () 
     expect(emailInput).toHaveValue('teste@teste.com');
   });
 });
+
+describe('4 - A pessoa deve conseguir escrever seu email no input de email', () => {
+  it('É possível escrever a senha', () => {
+    renderWithRouter(<App />);
+    const passwordInput = screen.getByTestId('password-input');
+    userEvent.type(passwordInput, '1234567');
+    expect(passwordInput).toHaveValue('1234567');
+  });
+});

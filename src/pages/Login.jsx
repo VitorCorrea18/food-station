@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 export default function Login() {
   const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <Form>
@@ -21,6 +21,8 @@ export default function Login() {
         type="password"
         placeholder="Password"
         data-testid="password-input"
+        onChange={ (e) => setPassword(e.target.value) }
+        value={ password }
       />
       <Button
         data-testid="login-submit-btn"
