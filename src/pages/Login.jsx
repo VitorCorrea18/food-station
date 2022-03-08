@@ -17,8 +17,14 @@ export default function Login() {
     }
   }, [password, email]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem('mealsToken', '1');
+    localStorage.setItem('cocktailsToken', '1');
+  };
+
   return (
-    <Form>
+    <Form onSubmit={ handleSubmit }>
       <h1>Login</h1>
       <FormControl
         type="email"

@@ -94,3 +94,18 @@ describe('5 - botão só é liberado com e-mail e senha válido', () => {
     expect(btnSubmit).toHaveAttribute('disabled');
   });
 });
+
+describe('6 - Salve no localStorage as chaves mealsToken e cocktailsToken', () => {
+  it('as chaves mealsToken e cocktailsToken devem estar salvos em localStorage', () => {
+    renderWithRouter(<App />);
+    const emailInput = screen.getByTestId(EMAIL_INPUT);
+    const passwordInput = screen.getByTestId(PASSWORD_INPUT);
+    const btnSubmit = screen.getByTestId(BTN_SUBMIT);
+    userEvent.type(emailInput, TEST_EMAIL);
+    userEvent.type(passwordInput, TEST_PASSWORD);
+    userEvent.click(btnSubmit);
+    // fonte: https://github.com/testing-library/react-testing-library/blob/main/README.md
+    expect(window.localStorage.getItem('mealsToken')).toEqual('1');
+    expect(window.localStorage.getItem('cocktailsToken')).toEqual('1');
+  });
+});
