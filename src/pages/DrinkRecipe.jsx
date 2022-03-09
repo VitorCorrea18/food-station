@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import fetchDrinkRecipe from '../services/fetchDrinkRecipe ';
 
 export default function DrinkRecipe() {
+  const [recipe, setRecipe] = useState({});
+  const { location: { pathname } } = useHistory();
+
+  const getData = async (id) => {
+    const data = await fetchDrinkRecipe(id);
+    setRecipe(data);
+  };
+
+  useEffect(() => {
+    const id = pathname.split('/')[2];
+    getData(id);
+  }, []);
+
   return (
     <div>
       <img data-testid="recipe-photo" />
