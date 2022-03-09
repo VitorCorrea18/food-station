@@ -13,7 +13,7 @@ const fetchData = async (name, type, location) => {
   try {
     const promise = await fetch(`${URL}${type}=${name}`);
     const data = await promise.json();
-    console.log(data);
+    return Object.values(data)[0];
   } catch (error) {
     console.log(error);
   }

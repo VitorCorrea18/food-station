@@ -8,12 +8,17 @@ import fetchData from '../services/fetchData';
 export default function SearchBar() {
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('');
+  const [data, setData] = useState([]);
   const { location: { pathname } } = useHistory();
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (searchType === 'f' && search.length > 1) {
       global.alert('Your search must have only 1 (one) character');
-    } else fetchData(search, searchType, pathname);
+    } else {
+      const APIData = await fetchData(search, searchType, pathname);
+      console.log(data);
+      setData(APIData);
+    }
   };
 
   return (
