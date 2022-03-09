@@ -6,6 +6,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 export default function SearchBar() {
   return (
     <div>
+      <input data-testid="search-input" type="text" />
       <ToggleButtonGroup type="radio" name="options">
         <ToggleButton
           value={ 1 }
@@ -33,6 +34,5 @@ export default function SearchBar() {
         Search
       </Button>
     </div>
-
   );
 }

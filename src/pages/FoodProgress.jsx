@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function FoodInProgress() {
+export default function FoodProgress() {
   return (
-    <h1>Food in progress</h1>
+    <div>FoodProgress</div>
   );
 }

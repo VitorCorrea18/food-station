@@ -1,7 +1,8 @@
 import React from 'react';
+import Header from '../components/Header';
 
-export default function DoneRecipes() {
+export default function DoneRecipe() {
   return (
-    <h1>Done Recipes</h1>
+    <Header title="Done Recipes" withSearchButton={ false } />
   );
 }
