@@ -1,28 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import fetchFood from '../services/fetchFoodApi';
 
 export default function SearchBar() {
+  const [search, setSearch] = useState('');
+  const [searchType, setSearchType] = useState('');
+
+  const handleSearch = () => {
+    if (searchType === 'f' && search.length > 1) {
+      global.alert('Your search must have only 1 (one) character');
+    } else fetchFood(search, searchType);
+  };
+
   return (
     <div>
-      <input data-testid="search-input" type="text" />
-      <ToggleButtonGroup type="radio" name="options">
+      <input
+        data-testid="search-input"
+        type="text"
+        value={ search }
+        onChange={ (e) => setSearch(e.target.value) }
+      />
+      <ToggleButtonGroup name="options">
         <ToggleButton
-          value={ 1 }
+          value="i"
           data-testid="ingredient-search-radio"
+          type="radio"
+          name="options"
+          checked={ false }
+          onChange={ (e) => setSearchType(e.target.value) }
         >
           Ingredient
         </ToggleButton>
         <ToggleButton
-          value={ 1 }
+          value="s"
           data-testid="name-search-radio"
+          type="radio"
+          name="options"
+          checked={ false }
+          onChange={ (e) => setSearchType(e.target.value) }
         >
           Name
         </ToggleButton>
         <ToggleButton
-          value={ 1 }
+          value="f"
           data-testid="first-letter-search-radio"
+          type="radio"
+          name="options"
+          checked={ false }
+          onChange={ (e) => setSearchType(e.target.value) }
         >
           First Letter
         </ToggleButton>
@@ -30,6 +57,7 @@ export default function SearchBar() {
       <Button
         data-testid="exec-search-btn"
         type="submit"
+        onClick={ handleSearch }
       >
         Search
       </Button>

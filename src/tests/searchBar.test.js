@@ -3,6 +3,11 @@ import { screen, render } from '@testing-library/react';
 import SearchBar from '../components/SearchBar';
 
 describe('13- Implemente os elementos da barra de busca', () => {
+  it('A barra de busca deve possuir data-testid="search-input"', () => {
+    render(<SearchBar />);
+    const searchInput = screen.getByTestId('search-input');
+    expect(searchInput).toBeInTheDocument();
+  });
   it('O radio button deve possuir data-testid="ingredient-search-radio"', () => {
     render(<SearchBar />);
     const ingredientButton = screen.getByTestId('ingredient-search-radio');
