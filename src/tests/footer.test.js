@@ -1,6 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Footer from '../components/Footer';
 import renderWithRouter from './renderWithRouter';
 import Login from '../pages/Login';
@@ -44,16 +45,16 @@ describe('19- Implemente os elementos do menu inferior', () => {
   });
 });
 
-describe('20-verifica se o footer renderiza corretamente em cada pagina', () => {
-  const hasNoHeader = () => {
+describe('21-verifica se o footer renderiza corretamente em cada pagina', () => {
+  const hasNofooter = () => {
     const footerContainer = screen.queryByTestId(FOOTER_TESTID);
 
     expect(footerContainer).not.toBeInTheDocument();
   };
 
-  it('O header é não é renderizado na pagina Login', () => {
+  it('O footer é não é renderizado na pagina Login', () => {
     renderWithRouter(<Login />);
-    hasNoHeader();
+    hasNofooter();
   });
 
   it('O footer é renderizado corretamente na pagina comidas', () => {
@@ -70,22 +71,22 @@ describe('20-verifica se o footer renderiza corretamente em cada pagina', () => 
 
   it('O footer é não é renderizado na tela de detalhes de uma receita de comidas', () => {
     renderWithRouter(<FoodRecipe />);
-    hasNoHeader();
+    hasNofooter();
   });
 
   it('O footer é não é renderizado na tela de detalhes de uma receita de bebidas', () => {
     renderWithRouter(<DrinkRecipe />);
-    hasNoHeader();
+    hasNofooter();
   });
 
   it('O footer é não é renderizado na tela de receita em progresso de comida', () => {
     renderWithRouter(<FoodProgress />);
-    hasNoHeader();
+    hasNofooter();
   });
 
   it('O footer é não é renderizado na tela de receita em progresso de bebida', () => {
     renderWithRouter(<DrinkProgress />);
-    hasNoHeader();
+    hasNofooter();
   });
 
   it('O footer é renderizado corretamente na pagina Explore', () => {
@@ -100,55 +101,79 @@ describe('20-verifica se o footer renderiza corretamente em cada pagina', () => 
     expect(footerContainer).toBeInTheDocument();
   });
 
-  it('O header tem os ícones corretos na tela de explorar bebidas', () => {
+  it('O footer tem os ícones corretos na tela de explorar bebidas', () => {
     renderWithRouter(<ExploreDrink />);
     const footerContainer = screen.getByTestId('footer');
     expect(footerContainer).toBeInTheDocument();
   });
 
-  it('O header tem os ícones corretos na tela explorar comidas por ingrediente', () => {
+  it('O footer tem os ícones corretos na tela explorar comidas por ingrediente', () => {
     renderWithRouter(<ExploreFoodIng />);
     const footerContainer = screen.getByTestId('footer');
     expect(footerContainer).toBeInTheDocument();
   });
 
-  it('O header tem os ícones corretos na tela explorar bebidas por ingrediente', () => {
+  it('O footer tem os ícones corretos na tela explorar bebidas por ingrediente', () => {
     renderWithRouter(<ExploreDrinkIng />);
     const footerContainer = screen.getByTestId('footer');
     expect(footerContainer).toBeInTheDocument();
   });
 
-  it('O header tem os ícones corretos na tela explorar comidas por nacionalidade', () => {
+  it('O footer tem os ícones corretos na tela explorar comidas por nacionalidade', () => {
     renderWithRouter(<ExploreFoodNat />);
     const footerContainer = screen.getByTestId('footer');
     expect(footerContainer).toBeInTheDocument();
   });
 
-  it('O header tem os ícones corretos na tela de perfil', () => {
+  it('O footer tem os ícones corretos na tela de perfil', () => {
     renderWithRouter(<Profile />);
     const footerContainer = screen.getByTestId('footer');
     expect(footerContainer).toBeInTheDocument();
   });
 
-  it('O header tem os ícones corretos na tela de receitas feitas', () => {
+  it('O footer tem os ícones corretos na tela de receitas feitas', () => {
     renderWithRouter(<DoneRecipe />);
-    hasNoHeader();
+    hasNofooter();
   });
 
-  it('O header tem os ícones corretos na tela de receitas favoritas', () => {
+  it('O footer tem os ícones corretos na tela de receitas favoritas', () => {
     renderWithRouter(<Favorite />);
-    hasNoHeader();
+    hasNofooter();
   });
 });
 
-// describe(
-//   'Redirecione a pessoa usuária para tela perfil ao clicar no botão perfil', () => {
-//     it('A mudança de tela ocorre corretamente', () => {
-//       const { history } = renderWithRouter(<Foods />);
-//       const exploreIcon = screen.getByTestId('explore-bottom-btn');
-//       userEvent.click(exploreIcon);
-//       const { location: { pathname } } = history;
-//       expect(pathname).toBe('/explore'); // testa se a rota é root '/'.
-//     });
-//   },
-// );
+describe(
+  '22- Redirecione a pessoa usuária para cocktails ao clicar no ícone de bebidas', () => {
+    it('A mudança de tela ocorre corretamente para bebidas', () => {
+      const { history } = renderWithRouter(<Footer />);
+      const drinkIcon = screen.getByTestId('drinks-bottom-btn');
+      userEvent.click(drinkIcon);
+      const { location: { pathname } } = history;
+      expect(pathname).toBe('/drinks'); // testa se a rota é root '/'.
+    });
+  },
+);
+
+describe(
+  '23- Redirecione a pessoa usuária para cocktails ao clicar no ícone de explore', () => {
+    it('A mudança de tela ocorre corretamente para explorar', () => {
+      const { history } = renderWithRouter(<Footer />);
+      const exploreIcon = screen.getByTestId('explore-bottom-btn');
+      userEvent.click(exploreIcon);
+      const { location: { pathname } } = history;
+      expect(pathname).toBe('/explore'); // testa se a rota é root '/'.
+    });
+  },
+);
+
+describe(
+  '24- Redirecione a pessoa usuária para cocktails ao clicar no ícone de foods', () => {
+    it('A mudança de tela ocorre corretamente foods', () => {
+      const { history } = renderWithRouter(<Footer />);
+      const foodIcon = screen.getByTestId('food-bottom-btn');
+      userEvent.click(foodIcon);
+      const { location: { pathname } } = history;
+      expect(pathname).toBe('/foods'); // testa se a rota é root '/'.
+    });
+  },
+);
