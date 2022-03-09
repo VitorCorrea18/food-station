@@ -146,18 +146,17 @@ describe(
   },
 );
 
-describe('Aciona a barra de busca ao clicar no botão de busca', () => {
+describe('Habilita e desabilita a barra de busca ao clicar no botão de busca', () => {
   it('A barra de busca está presente ao clicar o botão', () => {
+    renderWithRouter(<Foods />);
+
     const searchIcon = screen.queryByTestId(HEADER_SEARCH_ICON_TESTID);
     userEvent.click(searchIcon);
+
     const searchBar = screen.queryByTestId(SEARCH_BAR_TESTID);
     expect(searchBar).toBeInTheDocument();
-  });
 
-  it('A barra de busca desaparece ao clicar novamente no botão de busca', () => {
-    const searchIcon = screen.queryByTestId(HEADER_SEARCH_ICON_TESTID);
     userEvent.click(searchIcon);
-    const searchBar = screen.queryByTestId(SEARCH_BAR_TESTID);
     expect(searchBar).not.toBeInTheDocument();
   });
 });
