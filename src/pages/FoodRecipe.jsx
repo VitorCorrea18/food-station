@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function FoodRecipes() {
+export default function FoodRecipe() {
   return (
-    <h1>FoodRecipes</h1>
+    <div>FoodRecipe</div>
   );
 }
