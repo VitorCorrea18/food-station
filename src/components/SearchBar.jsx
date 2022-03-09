@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import fetchFood from '../services/fetchFoodApi';
+import fetchData from '../services/fetchData';
 
 export default function SearchBar() {
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('');
+  const { location: { pathname } } = useHistory();
 
   const handleSearch = () => {
     if (searchType === 'f' && search.length > 1) {
       global.alert('Your search must have only 1 (one) character');
-    } else fetchFood(search, searchType);
+    } else fetchData(search, searchType, pathname);
   };
 
   return (
