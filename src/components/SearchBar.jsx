@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
@@ -9,17 +9,28 @@ export default function SearchBar() {
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('');
   const [data, setData] = useState([]);
-  const { location: { pathname } } = useHistory();
+  const history = useHistory();
+  const { location: { pathname } } = history;
 
   const handleSearch = async () => {
     if (searchType === 'f' && search.length > 1) {
       global.alert('Your search must have only 1 (one) character');
     } else {
       const APIData = await fetchData(search, searchType, pathname);
-      console.log(data);
       setData(APIData);
     }
+    setSearch('');
+    setSearchType('');
   };
+
+  useEffect(() => {
+    if (data === null) {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    } else if (data !== null && data.length === 1) {
+      const id = Object.values(data[0])[0];
+      history.push(`${pathname}/${id}`);
+    }
+  }, [data]);
 
   return (
     <div>
