@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import fetchData from '../services/fetchData';
+import { MAX_RECIPIES } from '../helpers/constants';
+import AppContext from '../context/context';
 
 export default function SearchBar() {
+  const { setFoodData, setDrinkData } = useContext(AppContext);
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('');
   const [data, setData] = useState([]);
@@ -25,10 +28,13 @@ export default function SearchBar() {
 
   useEffect(() => {
     if (data === null) {
-      global.alert('Sorry, we haven\'t found any recipes for these filters.');
-    } else if (data !== null && data.length === 1) {
+      return global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    } if (data !== null && data.length === 1) {
       const id = Object.values(data[0])[0];
-      history.push(`${pathname}/${id}`);
+      return history.push(`${pathname}/${id}`);
+    } if (data !== null && data.length > 1) {
+      const filterData = data.filter((item, index) => index < MAX_RECIPIES);
+      return (pathname === '/foods') ? setFoodData(filterData) : setDrinkData(filterData);
     }
   }, [data]);
 
