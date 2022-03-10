@@ -7,10 +7,13 @@ const verifyRecipe = (id, setVerify, string) => {
     if (findRecipe !== undefined) setVerify('done');
   }
   if (inProgressRecipes) {
-    const idsInProgress = Object.keys(inProgressRecipes[string]);
-    const findRecipe = idsInProgress
-      .find((data) => data === id);
-    if (findRecipe !== undefined) setVerify('started');
+    const dadosSalvos = JSON.parse(inProgressRecipes);
+    if (Object.keys(dadosSalvos[string]).length > 0) {
+      const idsInProgress = Object.keys(dadosSalvos[string]);
+      const findRecipe = idsInProgress
+        .find((data) => data === id);
+      if (findRecipe !== undefined) setVerify('started');
+    }
   }
 };
 
