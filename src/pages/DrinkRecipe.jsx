@@ -67,6 +67,15 @@ export default function DrinkRecipe() {
             Start Recipe
           </button>
         )}
+        { verify === 'started' && (
+          <button
+            className="fixed-bottom border"
+            data-testid="start-recipe-btn"
+            type="button"
+          >
+            Continue Recipe
+          </button>
+        )}
       </div>
     );
   }
