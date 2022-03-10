@@ -1,30 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './context';
-import { FIRST_TWELVE } from '../helpers/constants';
-import {
-  fetchInicialDrinkData,
-  fetchInicialFoodData,
-} from '../services/fetchInicialData';
+import callFetchCategory from '../helpers/callFetchCategory';
+import callFetchInicialData from '../helpers/callFetchInicialData';
 
 const Provider = ({ children }) => {
   const [foodData, setFoodData] = useState([]);
   const [drinkData, setDrinkData] = useState([]);
-
-  const callFetchInicialData = async () => {
-    // foods
-    const inicialFoodData = await fetchInicialFoodData();
-    setFoodData(inicialFoodData.filter((food, index) => index < FIRST_TWELVE));
-    // drinks
-    const inicialDrinkData = await fetchInicialDrinkData();
-    setDrinkData(inicialDrinkData.filter((drink, index) => index < FIRST_TWELVE));
-  };
+  const [foodCategory, setFoodCategory] = useState([]);
+  const [drinkCategory, setDrinkCategory] = useState([]);
 
   useEffect(() => {
-    callFetchInicialData();
+    callFetchInicialData(setFoodData, setDrinkData);
+    callFetchCategory(setFoodCategory, setDrinkCategory);
   }, []);
 
-  const context = { foodData, setFoodData, drinkData, setDrinkData };
+  const context = {
+    foodData, setFoodData, drinkData, setDrinkData, foodCategory, drinkCategory };
+
   return (
     <AppContext.Provider value={ context }>
       {children}
