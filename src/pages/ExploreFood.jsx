@@ -10,19 +10,19 @@ export default function ExploreFoods() {
         type="button"
         data-testid="explore-by-ingredient"
       >
-        explore-by-ingredient
+        By Ingredient
       </button>
       <button
         type="button"
         data-testid="explore-by-nationality"
       >
-        explore-by-nationality
+        By Nationality
       </button>
       <button
         type="button"
         data-testid="explore-surprise"
       >
-        explore-surprise
+        Surprise me!
       </button>
       <Footer />
     </>
