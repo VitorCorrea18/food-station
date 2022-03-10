@@ -6,7 +6,24 @@ export default function ExploreFoods() {
   return (
     <>
       <Header title="Explore Foods" withSearchButton={ false } />
-      <h1>Explore Foods</h1>
+      <button
+        type="button"
+        data-testid="explore-by-ingredient"
+      >
+        explore-by-ingredient
+      </button>
+      <button
+        type="button"
+        data-testid="explore-by-nationality"
+      >
+        explore-by-nationality
+      </button>
+      <button
+        type="button"
+        data-testid="explore-surprise"
+      >
+        explore-surprise
+      </button>
       <Footer />
     </>
   );
