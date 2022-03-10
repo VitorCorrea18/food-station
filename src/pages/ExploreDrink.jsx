@@ -1,14 +1,17 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 export default function ExploreDrinks() {
+  const history = useHistory();
   return (
     <>
       <Header title="Explore Drinks" withSearchButton={ false } />
       <button
         type="button"
         data-testid="explore-by-ingredient"
+        onClick={ () => history.push('/explore/drinks/ingredients') }
       >
         By Ingredient
       </button>
