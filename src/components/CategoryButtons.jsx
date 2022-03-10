@@ -1,26 +1,43 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import AppContext from '../context/context';
 
-export default function CategoryButtons({ category }) {
-  const [foodData, setFoodData] = useContext(AppContext);
+import { DRINKS, FOODS } from '../helpers/constants';
+import { filterDrinks, filterFoods } from '../helpers/categoryFilter';
+
+export default function CategoryButtons({ category, type }) {
+  const { setFoodData, setDrinkData } = useContext(AppContext);
+  const [activeFilter, setActiveFilter] = useState(false);
+
+  const callFilter = () => {
+    // esta função deveria chamar os filtros que estão na pasta Helpers, mas por algum motivo
+    // as função não estão sendo chamadas.
+    if (type === FOODS) filterFoods(setFoodData, activeFilter, category);
+    if (type === DRINKS) filterDrinks(setDrinkData, activeFilter, category);
+  };
+
+  const handleCategoryClick = () => {
+    if (!activeFilter) {
+      setActiveFilter(true);
+    } else setActiveFilter(false);
+
+    callFilter();
+  };
 
   return (
-    <button
-      type="button"
+    <ToggleButton
+      type="radio"
+      name="categoryBtn"
       data-testid={ `${category}-category-filter` }
+      onChange={ handleCategoryClick }
     >
       { category }
-    </button>
-    // Os requisito 28 e 29 podem ser feitos por aqui, segue o meu raciocionio até o momento:
-    // Manipular os contextos por aqui "foodData", "setFoodData".
-    // Trocar esse button por um toggle do bootstrap igual foi feito no searchBar,
-    // e adicionar a lógica de ativar e desativar o filtro chamando a Api correspondente em cada caso.
-    // Obs: acho que da pra usar a callInicialFetch nos helpers para retirar o filtro.
-    // As funções de fetchByCategory estão na pasta services já prontas.
+    </ToggleButton>
   );
 }
 
 CategoryButtons.propTypes = {
   category: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AppContext from '../context/context';
@@ -12,14 +13,17 @@ export default function Foods() {
   return (
     <>
       <Header title="Foods" withSearchButton />
-      {
-        foodCategory.map((category) => (
-          <CategoryButtons
-            key={ category.strCategory }
-            category={ category.strCategory }
-          />
-        ))
-      }
+      <ToggleButtonGroup name="categoryBtn">
+        {
+          foodCategory.map((category) => (
+            <CategoryButtons
+              key={ category.strCategory }
+              category={ category.strCategory }
+              type={ FOODS }
+            />
+          ))
+        }
+      </ToggleButtonGroup>
 
       {
         foodData.map((food, index) => {
