@@ -6,7 +6,18 @@ export default function Explore() {
   return (
     <>
       <Header title="Explore" withSearchButton={ false } />
-      <h1>Explore</h1>
+      <button
+        type="button"
+        data-testid="explore-foods"
+      >
+        Explore Foods
+      </button>
+      <button
+        type="button"
+        data-testid="explore-drinks"
+      >
+        Explore Drinks
+      </button>
       <Footer />
     </>
   );
