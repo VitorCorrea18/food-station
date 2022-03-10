@@ -1,4 +1,4 @@
-const verifyRecipe = (id, setVerify) => {
+const verifyRecipe = (id, setVerify, string) => {
   const doneRecipes = localStorage.getItem('doneRecipes');
   const inProgressRecipes = localStorage.getItem('inProgressRecipes');
   if (doneRecipes) {
@@ -7,8 +7,9 @@ const verifyRecipe = (id, setVerify) => {
     if (findRecipe !== undefined) setVerify('done');
   }
   if (inProgressRecipes) {
-    const findRecipe = inProgressRecipes
-      .find((data) => data.id === id);
+    const idsInProgress = Object.keys(inProgressRecipes[string]);
+    const findRecipe = idsInProgress
+      .find((data) => data === id);
     if (findRecipe !== undefined) setVerify('started');
   }
 };

@@ -13,7 +13,8 @@ export default function FoodRecipe() {
   const [recipe, setRecipe] = useState({});
   const [verify, setVerify] = useState('new');
   const [ingrMeasure, setIngrMeasure] = useState({});
-  const { location: { pathname } } = useHistory();
+  const history = useHistory();
+  const { location: { pathname } } = history;
 
   const getData = async (id) => {
     const data = await fetchFoodRecipe(id);
@@ -24,8 +25,12 @@ export default function FoodRecipe() {
   useEffect(() => {
     const id = pathname.split('/')[2];
     getData(id);
-    verifyRecipe(id, setVerify);
+    verifyRecipe(id, setVerify, 'meals');
   }, [pathname]);
+
+  const startCooking = () => {
+    history.push(`/foods/${pathname.split('/')[2]}/in-progress`);
+  };
 
   if (Object.keys(recipe).length > 0) {
     return (
@@ -72,6 +77,7 @@ export default function FoodRecipe() {
             className="fixed-bottom border"
             data-testid="start-recipe-btn"
             type="button"
+            onClick={ startCooking }
           >
             Start Recipe
           </button>
