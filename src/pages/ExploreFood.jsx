@@ -18,6 +18,7 @@ export default function ExploreFoods() {
       <button
         type="button"
         data-testid="explore-by-nationality"
+        onClick={ () => history.push('/explore/foods/nationalities') }
       >
         By Nationality
       </button>
