@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import fetchData from '../services/fetchData';
-import { MAX_RECIPIES } from '../helpers/constants';
+import { FIRST_TWELVE } from '../helpers/constants';
 import AppContext from '../context/context';
 
 export default function SearchBar() {
@@ -33,7 +33,7 @@ export default function SearchBar() {
       const id = Object.values(data[0])[0];
       return history.push(`${pathname}/${id}`);
     } if (data !== null && data.length > 1) {
-      const filterData = data.filter((item, index) => index < MAX_RECIPIES);
+      const filterData = data.filter((item, index) => index < FIRST_TWELVE);
       return (pathname === '/foods') ? setFoodData(filterData) : setDrinkData(filterData);
     }
   }, [data]);
