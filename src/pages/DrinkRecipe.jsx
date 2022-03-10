@@ -6,10 +6,12 @@ import getIngredientesMeasure from '../helpers/getDrinkIngrMeasure';
 import AppContext from '../context/context';
 import SugestCard from '../components/SugestCard';
 import '../styles/recipe.css';
+import verifyRecipe from '../helpers/verifyRecipe';
 
 export default function DrinkRecipe() {
   const { foodData } = useContext(AppContext);
   const [recipe, setRecipe] = useState({});
+  const [verify, setVerify] = useState('new');
   const [ingrMeasure, setIngrMeasure] = useState({});
   const { location: { pathname } } = useHistory();
   const getData = async (id) => {
@@ -21,6 +23,7 @@ export default function DrinkRecipe() {
   useEffect(() => {
     const id = pathname.split('/')[2];
     getData(id);
+    verifyRecipe(id, setVerify);
   }, [pathname]);
 
   if (Object.keys(recipe).length > 0) {
@@ -55,14 +58,15 @@ export default function DrinkRecipe() {
             )))
           }
         </div>
-        <button
-          className="fixed-bottom border"
-          data-testid="start-recipe-btn"
-          type="button"
-        >
-          Start Recipe
-
-        </button>
+        { verify === 'new' && (
+          <button
+            className="fixed-bottom border"
+            data-testid="start-recipe-btn"
+            type="button"
+          >
+            Start Recipe
+          </button>
+        )}
       </div>
     );
   }
