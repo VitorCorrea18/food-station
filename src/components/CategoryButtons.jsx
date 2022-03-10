@@ -6,22 +6,22 @@ import AppContext from '../context/context';
 import { DRINKS, FOODS } from '../helpers/constants';
 import { filterDrinks, filterFoods } from '../helpers/categoryFilter';
 
-export default function CategoryButtons({ category, type }) {
+export default function CategoryButtons({ category, filter }) {
   const { setFoodData, setDrinkData } = useContext(AppContext);
   const [activeFilter, setActiveFilter] = useState(false);
 
   const callFilter = () => {
     // esta função deveria chamar os filtros que estão na pasta Helpers, mas por algum motivo
     // as função não estão sendo chamadas.
-    if (type === FOODS) filterFoods(setFoodData, activeFilter, category);
-    if (type === DRINKS) filterDrinks(setDrinkData, activeFilter, category);
+    console.log(filter);
+    if (filter === FOODS) filterFoods(setFoodData, activeFilter, category);
+    if (filter === DRINKS) filterDrinks(setDrinkData, activeFilter, category);
   };
 
   const handleCategoryClick = () => {
     if (!activeFilter) {
       setActiveFilter(true);
     } else setActiveFilter(false);
-
     callFilter();
   };
 
@@ -39,5 +39,5 @@ export default function CategoryButtons({ category, type }) {
 
 CategoryButtons.propTypes = {
   category: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
 };

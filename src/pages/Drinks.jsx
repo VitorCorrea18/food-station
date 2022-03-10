@@ -19,7 +19,7 @@ export default function Drinks() {
             <CategoryButtons
               key={ category.strCategory }
               category={ category.strCategory }
-              type={ DRINKS }
+              filter={ DRINKS }
             />
           ))
         }
