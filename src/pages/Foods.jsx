@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import { Link } from 'react-router-dom';
+import { ToggleButton } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AppContext from '../context/context';
@@ -15,6 +16,14 @@ export default function Foods() {
     <>
       <Header title="Foods" withSearchButton />
       <ToggleButtonGroup name="categoryBtn">
+        {
+          <ToggleButton
+            type="button"
+            data-testid="All-category-filter"
+          >
+            All
+          </ToggleButton>
+        }
         {
           foodCategory.map((category) => (
             <CategoryButtons
