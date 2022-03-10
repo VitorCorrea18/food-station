@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ToggleButtonGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 import CategoryButtons from '../components/CategoryButtons';
 import Footer from '../components/Footer';
@@ -29,7 +30,9 @@ export default function Drinks() {
         drinkData.map((drink, index) => {
           const data = { ...drink, index };
           return (
-            <Card key={ drink.idDrink } data={ data } type={ DRINKS } />
+            <Link key={ drink.idDrink } to={ `/drinks/${drink.idDrink}` }>
+              <Card key={ drink.idDrink } data={ data } type={ DRINKS } />
+            </Link>
           );
         })
       }
