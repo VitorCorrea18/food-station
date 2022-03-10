@@ -7,12 +7,17 @@ import AppContext from '../context/context';
 import SugestCard from '../components/SugestCard';
 import '../styles/recipe.css';
 import verifyRecipe from '../helpers/verifyRecipe';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+
+const copy = require('clipboard-copy');
 
 export default function FoodRecipe() {
   const { drinkData } = useContext(AppContext);
   const [recipe, setRecipe] = useState({});
   const [verify, setVerify] = useState('new');
   const [ingrMeasure, setIngrMeasure] = useState({});
+  const [copyMessage, setCopyMessage] = useState('');
   const history = useHistory();
   const { location: { pathname } } = history;
 
@@ -32,13 +37,29 @@ export default function FoodRecipe() {
     history.push(`/foods/${pathname.split('/')[2]}/in-progress`);
   };
 
+  const share = () => {
+    copy(`http://localhost:3000${pathname}`);
+    setCopyMessage('Link copied!');
+  };
+
   if (Object.keys(recipe).length > 0) {
     return (
       <div>
         <img data-testid="recipe-photo" alt="food" src={ recipe.strMealThumb } />
         <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
-        <button data-testid="share-btn" type="button">SHARE</button>
-        <button data-testid="favorite-btn" type="button">FAVORITE</button>
+        {copyMessage.length > 0 && (
+          <p>{copyMessage}</p>
+        )}
+        <button
+          onClick={ share }
+          data-testid="share-btn"
+          type="button"
+        >
+          <img src={ shareIcon } alt="share icon" />
+        </button>
+        <button data-testid="favorite-btn" type="button">
+          <img src={ whiteHeartIcon } alt="favorite icon" />
+        </button>
         <p data-testid="recipe-category">
           {recipe.strCategory}
         </p>
