@@ -55,7 +55,14 @@ export default function DrinkRecipe() {
             )))
           }
         </div>
-        <button data-testid="start-recipe-btn" type="button">INICIAR RECEITA</button>
+        <button
+          className="fixed-bottom border"
+          data-testid="start-recipe-btn"
+          type="button"
+        >
+          Start Recipe
+
+        </button>
       </div>
     );
   }

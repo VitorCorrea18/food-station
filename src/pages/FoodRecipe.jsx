@@ -63,7 +63,14 @@ export default function FoodRecipe() {
             )))
           }
         </div>
-        <button data-testid="start-recipe-btn" type="button">INICIAR RECEITA</button>
+        <button
+          className="fixed-bottom border"
+          data-testid="start-recipe-btn"
+          type="button"
+        >
+          INICIAR RECEITA
+
+        </button>
       </div>
     );
   }
