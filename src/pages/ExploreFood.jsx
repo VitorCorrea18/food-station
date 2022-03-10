@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import AppContext from '../context/context';
 
 export default function ExploreFoods() {
   const history = useHistory();
+  const { foodRandom } = useContext(AppContext);
   return (
     <>
       <Header title="Explore Foods" withSearchButton={ false } />
@@ -25,6 +27,7 @@ export default function ExploreFoods() {
       <button
         type="button"
         data-testid="explore-surprise"
+        onClick={ () => history.push(`/foods/${foodRandom[0].idMeal}`) }
       >
         Surprise me!
       </button>
