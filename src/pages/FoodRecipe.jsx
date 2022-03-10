@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
-import { URL_EMBED } from '../helpers/constants';
+import { URL_EMBED, FIRS_SIX } from '../helpers/constants';
+import AppContext from '../context/context';
+import SugestCard from '../components/SugestCard';
+import '../styles/recipe.css';
 
 export default function FoodRecipe() {
+  const { drinkData } = useContext(AppContext);
   const [recipe, setRecipe] = useState({});
   const [ingrMeasure, setIngrMeasure] = useState({});
   const { location: { pathname } } = useHistory();
@@ -50,9 +54,15 @@ export default function FoodRecipe() {
             .substring(URL_EMBED, recipe.strYoutube.length)}` }
           allow-same-origin
         />
-
-        <div data-testid={ `${0}-recomendation-card` }>RECOMENDADA</div>
-
+        <h2>Recomendações:</h2>
+        <div className="carousel">
+          {
+            drinkData.length > 0
+            && (drinkData.slice(0, FIRS_SIX).map((sugestion, index) => (
+              <SugestCard key={ index } data={ { ...sugestion, index, type: 'drink' } } />
+            )))
+          }
+        </div>
         <button data-testid="start-recipe-btn" type="button">INICIAR RECEITA</button>
       </div>
     );

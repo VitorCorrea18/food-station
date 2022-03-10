@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FIRS_SIX } from '../helpers/constants';
 import fetchDrinkRecipe from '../services/fetchDrinkRecipe ';
 import getIngredientesMeasure from '../helpers/getDrinkIngrMeasure';
+import AppContext from '../context/context';
+import SugestCard from '../components/SugestCard';
+import '../styles/recipe.css';
 
 export default function DrinkRecipe() {
+  const { foodData } = useContext(AppContext);
   const [recipe, setRecipe] = useState({});
   const [ingrMeasure, setIngrMeasure] = useState({});
   const { location: { pathname } } = useHistory();
@@ -42,7 +47,14 @@ export default function DrinkRecipe() {
         <p data-testid="instructions">
           {recipe.strInstructions}
         </p>
-        <div data-testid={ `${0}-recomendation-card` }>RECOMENDADA</div>
+        <div className="carousel">
+          {
+            foodData.length > 0
+            && (foodData.slice(0, FIRS_SIX).map((sugestion, index) => (
+              <SugestCard key={ index } data={ { ...sugestion, index, type: 'food' } } />
+            )))
+          }
+        </div>
         <button data-testid="start-recipe-btn" type="button">INICIAR RECEITA</button>
       </div>
     );
