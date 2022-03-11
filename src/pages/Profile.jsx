@@ -3,10 +3,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function Profile() {
+  const { email } = JSON.parse(localStorage.getItem('user'));
+
   return (
     <>
       <Header title="Profile" withSearchButton={ false } />
-      <h2 data-testid="profile-email"> </h2>
+      <h2 data-testid="profile-email">{email}</h2>
       <button
         data-testid="profile-done-btn"
         type="button"
