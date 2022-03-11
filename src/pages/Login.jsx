@@ -21,6 +21,11 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const inProgress = localStorage.getItem('inProgressRecipes');
+    if (!inProgress) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify({
+        cocktails: {}, meals: {} }));
+    }
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
     localStorage.setItem('user', JSON.stringify({ email }));

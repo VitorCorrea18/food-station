@@ -36,7 +36,7 @@ export default function SearchBar() {
       const filterData = data.filter((item, index) => index < FIRST_TWELVE);
       return (pathname === '/foods') ? setFoodData(filterData) : setDrinkData(filterData);
     }
-  }, [data]);
+  }, [data, history, pathname, setDrinkData, setFoodData]);
 
   return (
     <div>
