@@ -18,7 +18,7 @@ export const filterDrinks = async (setDrinkData, activeFilter, category) => {
   console.log('funciona! drinks');
   if (!activeFilter) {
     const filteredDrinks = await fetchDrinkByCategory(category);
-    setFoodData(filteredDrinks.filter((food, index) => index < FIRST_TWELVE));
+    setDrinkData(filteredDrinks.filter((food, index) => index < FIRST_TWELVE));
   } else {
     const inicialDrinkData = await fetchInicialDrinkData();
     setDrinkData(inicialDrinkData.filter((food, index) => index < FIRST_TWELVE));
