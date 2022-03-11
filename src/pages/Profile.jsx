@@ -28,6 +28,10 @@ export default function Profile() {
       <button
         data-testid="profile-logout-btn"
         type="button"
+        onClick={ () => {
+          localStorage.clear();
+          history.push('/');
+        } }
       >
         Logout
       </button>
