@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
-import { isFavorite } from '../helpers/setFavorite';
+import { isFavorite, handleFavoriteMeal } from '../helpers/setFavorite';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
