@@ -6,11 +6,19 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AppContext from '../context/context';
 import Card from '../components/Card';
-import { FOODS } from '../helpers/constants';
+import { FOODS, FIRST_TWELVE } from '../helpers/constants';
 import CategoryButtons from '../components/CategoryButtons';
+import { fetchInicialFoodData } from '../services/fetchInicialData';
 
 export default function Foods() {
-  const { foodData, foodCategory } = useContext(AppContext);
+  const { foodData, setFoodData, foodCategory } = useContext(AppContext);
+
+  const apiFoodFunc = async () => {
+    const inicialFoodData = await fetchInicialFoodData();
+    setFoodData(inicialFoodData.filter((food, index) => index < FIRST_TWELVE));
+  };
+
+  const handleClickButtonAll = async () => apiFoodFunc();
 
   return (
     <>
@@ -20,6 +28,7 @@ export default function Foods() {
           <ToggleButton
             type="button"
             data-testid="All-category-filter"
+            onClick={ handleClickButtonAll }
           >
             All
           </ToggleButton>

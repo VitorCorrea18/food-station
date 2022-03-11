@@ -1,20 +1,36 @@
 import React, { useContext } from 'react';
-import { ToggleButtonGroup } from 'react-bootstrap';
+import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 import CategoryButtons from '../components/CategoryButtons';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import AppContext from '../context/context';
-import { DRINKS } from '../helpers/constants';
+import { DRINKS, FIRST_TWELVE } from '../helpers/constants';
+import { fetchInicialDrinkData } from '../services/fetchInicialData';
 
 export default function Drinks() {
-  const { drinkData, drinkCategory } = useContext(AppContext);
+  const { drinkData, setDrinkData, drinkCategory } = useContext(AppContext);
+
+  const apiDrinkFunc = async () => {
+    const inicialDrinkData = await fetchInicialDrinkData();
+    setDrinkData(inicialDrinkData.filter((food, index) => index < FIRST_TWELVE));
+  };
+
+  const handleClickButtonAll = async () => apiDrinkFunc();
 
   return (
     <>
       <Header title="Drinks" withSearchButton />
+
       <ToggleButtonGroup name="categoryBtn">
+        <ToggleButton
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ handleClickButtonAll }
+        >
+          All
+        </ToggleButton>
         {
           drinkCategory.map((category) => (
             <CategoryButtons
