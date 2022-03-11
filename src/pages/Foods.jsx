@@ -13,12 +13,12 @@ import { fetchInicialFoodData } from '../services/fetchInicialData';
 export default function Foods() {
   const { foodData, setFoodData, foodCategory } = useContext(AppContext);
 
-  const apiFoodFunc = async () => {
+  const apiFood = async () => {
     const inicialFoodData = await fetchInicialFoodData();
     setFoodData(inicialFoodData.filter((food, index) => index < FIRST_TWELVE));
   };
 
-  const handleClickButtonAll = async () => apiFoodFunc();
+  const handleClickButtonAll = async () => apiFood();
 
   return (
     <>

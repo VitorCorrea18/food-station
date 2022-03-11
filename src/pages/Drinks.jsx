@@ -12,12 +12,12 @@ import { fetchInicialDrinkData } from '../services/fetchInicialData';
 export default function Drinks() {
   const { drinkData, setDrinkData, drinkCategory } = useContext(AppContext);
 
-  const apiDrinkFunc = async () => {
+  const apiDrink = async () => {
     const inicialDrinkData = await fetchInicialDrinkData();
     setDrinkData(inicialDrinkData.filter((food, index) => index < FIRST_TWELVE));
   };
 
-  const handleClickButtonAll = async () => apiDrinkFunc();
+  const handleClickButtonAll = async () => apiDrink();
 
   return (
     <>
