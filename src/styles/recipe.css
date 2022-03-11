@@ -1,0 +1,7 @@
+.carousel {
+  display: flex;
+}
+
+.carousel_2, .carousel_3, .carousel_4, .carousel_5 {
+  display: none;
+}
