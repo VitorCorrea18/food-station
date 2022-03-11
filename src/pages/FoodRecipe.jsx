@@ -3,12 +3,14 @@ import { useHistory } from 'react-router-dom';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
 import { URL_EMBED, FIRS_SIX } from '../helpers/constants';
+import { isFavorite, handleFavoriteMeal } from '../helpers/setFavorite';
 import AppContext from '../context/context';
 import SugestCard from '../components/SugestCard';
 import '../styles/recipe.css';
 import verifyRecipe from '../helpers/verifyRecipe';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const copy = require('clipboard-copy');
 
@@ -18,6 +20,7 @@ export default function FoodRecipe() {
   const [verify, setVerify] = useState('new');
   const [ingrMeasure, setIngrMeasure] = useState({});
   const [copyMessage, setCopyMessage] = useState('');
+  const [favorite, setFavorite] = useState(false);
   const history = useHistory();
   const { location: { pathname } } = history;
 
@@ -31,6 +34,7 @@ export default function FoodRecipe() {
     const id = pathname.split('/')[2];
     getData(id);
     verifyRecipe(id, setVerify, 'meals');
+    isFavorite(id, setFavorite);
   }, [pathname]);
 
   const startCooking = () => {
@@ -57,8 +61,15 @@ export default function FoodRecipe() {
         >
           <img src={ shareIcon } alt="share icon" />
         </button>
-        <button data-testid="favorite-btn" type="button">
-          <img src={ whiteHeartIcon } alt="favorite icon" />
+        <button
+          type="button"
+          onClick={ () => { handleFavoriteMeal(favorite, setFavorite, recipe); } }
+        >
+          <img
+            data-testid="favorite-btn"
+            src={ favorite ? blackHeartIcon : whiteHeartIcon }
+            alt="favorite icon"
+          />
         </button>
         <p data-testid="recipe-category">
           {recipe.strCategory}
