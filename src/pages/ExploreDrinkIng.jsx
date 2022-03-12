@@ -27,7 +27,7 @@ export default function ExploreDrinksIng() {
             </h1>
             <img
               alt="ingrediente"
-              src={ `https://www.themealdb.com/images/ingredients/${ingrediente.strIngredient1}.png` }
+              src={ `https://www.thecocktaildb.com/images/ingredients/${ingrediente.strIngredient1}-Small.png` }
               data-testid={ `${index}-card-img` }
             />
           </div>

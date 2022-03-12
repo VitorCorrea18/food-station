@@ -28,7 +28,7 @@ export default function ExploreFoodsIng() {
             </h1>
             <img
               alt="ingrediente"
-              src={ `https://www.themealdb.com/images/ingredients/${ingrediente.strIngredient}.png` }
+              src={ `https://www.themealdb.com/images/ingredients/${ingrediente.strIngredient}-Small.png` }
               data-testid={ `${index}-card-img` }
             />
           </div>
