@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
 import { isFavorite, handleFavoriteMeal } from '../helpers/setFavorite';
-import { handleSelect, setDoneClass } from '../helpers/setDoneIngre';
+import { handleSelect, setDoneClass, verifyDoneStorage }
+from '../helpers/setDoneIngre';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -30,6 +31,7 @@ export default function FoodProgress() {
     const id = pathname.split('/')[2];
     getData(id);
     isFavorite(id, setFavorite);
+    verifyDoneStorage('meals', id, setDone);
   }, [pathname]);
 
   const share = () => {
@@ -75,7 +77,14 @@ export default function FoodProgress() {
             >
               <input
                 type="checkbox"
-                onChange={ () => handleSelect(index, done, setDone) }
+                onChange={ () => handleSelect({
+                  type: 'meals',
+                  id: pathname.split('/')[2],
+                  index,
+                  done,
+                  setDone,
+                }) }
+                checked={ (setDoneClass(index, done) === 'Done') }
               />
               {`${ingredient} - ${ingrMeasure.filterMeasures[index]}`}
             </li>
