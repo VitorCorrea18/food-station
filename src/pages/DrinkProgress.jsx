@@ -18,6 +18,7 @@ export default function DrinkProgress() {
   const [copyMessage, setCopyMessage] = useState('');
   const [favorite, setFavorite] = useState(false);
   const [done, setDone] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(true);
   const history = useHistory();
   const { location: { pathname } } = history;
 
@@ -33,6 +34,13 @@ export default function DrinkProgress() {
     isFavorite(id, setFavorite);
     verifyDoneStorage('cocktails', id, setDone);
   }, [pathname]);
+
+  useEffect(() => {
+    const totalIngre = ingrMeasure.filterIngridients || [];
+    if (done.length === totalIngre.length) {
+      setIsDisabled(false);
+    } else setIsDisabled(true);
+  }, [done, ingrMeasure]);
 
   const share = () => {
     copy(`http://localhost:3000${pathname.split('/in-progress')[0]}`);
@@ -97,6 +105,7 @@ export default function DrinkProgress() {
           className="fixed-bottom border"
           data-testid="finish-recipe-btn"
           type="button"
+          disabled={ isDisabled }
           // onClick={ }
         >
           Finish
