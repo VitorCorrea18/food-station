@@ -69,6 +69,7 @@ export default function FoodProgress() {
               key={ index }
               data-testid={ `${index}-ingredient-step` }
             >
+              <input type="checkbox" value={ index } />
               {`${ingredient} - ${ingrMeasure.filterMeasures[index]}`}
             </li>
           ))}
