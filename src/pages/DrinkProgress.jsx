@@ -106,7 +106,7 @@ export default function DrinkProgress() {
           data-testid="finish-recipe-btn"
           type="button"
           disabled={ isDisabled }
-          // onClick={ }
+          onClick={ () => history.push('/done-recipes') }
         >
           Finish
         </button>
