@@ -30,7 +30,7 @@ export default function DrinkProgress() {
   }, [pathname]);
 
   const share = () => {
-    copy(`http://localhost:3000${pathname}`);
+    copy(`http://localhost:3000${pathname.split('/in-progress')[0]}`);
     setCopyMessage('Link copied!');
   };
 
