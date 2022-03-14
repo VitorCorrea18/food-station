@@ -111,6 +111,7 @@ export default function DrinkRecipe() {
             className="fixed-bottom border"
             data-testid="start-recipe-btn"
             type="button"
+            onClick={ startCooking }
           >
             Continue Recipe
           </button>
