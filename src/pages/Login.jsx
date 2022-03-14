@@ -33,7 +33,10 @@ export default function Login() {
   };
 
   return (
-    <Form onSubmit={ handleSubmit }>
+    <Form
+      onSubmit={ handleSubmit }
+      className="background-light"
+    >
       <h1>Login</h1>
       <FormControl
         type="email"
@@ -41,6 +44,7 @@ export default function Login() {
         data-testid="email-input"
         onChange={ (e) => setEmail(e.target.value) }
         value={ email }
+        className="width-100 mb-3"
       />
       <FormControl
         type="password"
@@ -48,11 +52,13 @@ export default function Login() {
         data-testid="password-input"
         onChange={ (e) => setPassword(e.target.value) }
         value={ password }
+        className="width-100 mb-3"
       />
       <Button
         data-testid="login-submit-btn"
         type="submit"
         disabled={ disabled }
+        className="width-100 mb-3 btn-warning"
       >
         Enter
       </Button>
