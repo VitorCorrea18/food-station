@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes, { string } from 'prop-types';
+import shareIcon from '../images/shareIcon.svg';
+
+const copy = require('clipboard-copy');
 
 export default function DoneCard({ data, index }) {
+  const [copyMessage, setCopyMessage] = useState('');
+  const share = () => {
+    copy(`http://localhost:3000/${data.type}s/${data.id}`);
+    setCopyMessage('Link copied!');
+  };
+
   return (
     <div>
       <img
@@ -9,17 +18,32 @@ export default function DoneCard({ data, index }) {
         src={ data.image }
         alt="recipe"
       />
-      <h3 data-testid={ `${index}-horizontal-top-text` }>{data.category}</h3>
+      <h3 data-testid={ `${index}-horizontal-top-text` }>
+        {`
+          ${data.type === 'food' ? data.nationality : data.alcoholicOrNot}
+          - ${data.category}
+        `}
+      </h3>
       <h2 data-testid={ `${index}-horizontal-name` }>{data.name}</h2>
       <h4 data-testid={ `${index}-horizontal-done-date` }>
         {`Done in: ${data.doneDate}`}
       </h4>
-      <button data-testid={ `${index}-horizontal-share-btn` } type="button">
-        Compartilhar
+      {copyMessage.length > 0 && (
+        <p>{copyMessage}</p>
+      )}
+      <button
+        data-testid={ `${index}-horizontal-share-btn` }
+        type="button"
+        onClick={ share }
+        src={ shareIcon }
+      >
+        <img src={ shareIcon } alt="share icon" />
       </button>
       <div>
         {data.tags.map((tag, i) => (
-          <span key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</span>
+          i < 2 && (
+            <span key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</span>
+          )
         ))}
       </div>
     </div>
@@ -28,7 +52,7 @@ export default function DoneCard({ data, index }) {
 
 DoneCard.propTypes = {
   data: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     type: PropTypes.string,
     nationality: PropTypes.string,
     category: PropTypes.string,
