@@ -1,0 +1,7 @@
+.Done {
+  text-decoration: line-through;
+}
+
+.notDone {
+  text-decoration: none;
+}
