@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Image from 'react-bootstrap/Image';
 import { PASSWORD_LENGTH, emailRegex } from '../helpers/constants';
+import appLogo from '../images/food-station-logo.png';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -33,35 +35,38 @@ export default function Login() {
   };
 
   return (
-    <Form
-      onSubmit={ handleSubmit }
-      className="background-light"
-    >
-      <h1>Login</h1>
-      <FormControl
-        type="email"
-        placeholder="Email"
-        data-testid="email-input"
-        onChange={ (e) => setEmail(e.target.value) }
-        value={ email }
-        className="width-100 mb-3"
-      />
-      <FormControl
-        type="password"
-        placeholder="Password"
-        data-testid="password-input"
-        onChange={ (e) => setPassword(e.target.value) }
-        value={ password }
-        className="width-100 mb-3"
-      />
-      <Button
-        data-testid="login-submit-btn"
-        type="submit"
-        disabled={ disabled }
-        className="width-100 mb-3 btn-warning"
+    <div className="">
+      <Form
+        onSubmit={ handleSubmit }
+        className="d-grid gap-2 col-10 mx-auto"
       >
-        Enter
-      </Button>
-    </Form>
+        <Image fluid src={ appLogo } alt="Food Station Logo" />
+        <h1>Login</h1>
+        <FormControl
+          type="email"
+          placeholder="Email"
+          data-testid="email-input"
+          onChange={ (e) => setEmail(e.target.value) }
+          value={ email }
+          className="mb-3"
+        />
+        <FormControl
+          type="password"
+          placeholder="Password"
+          data-testid="password-input"
+          onChange={ (e) => setPassword(e.target.value) }
+          value={ password }
+          className="mb-3"
+        />
+        <Button
+          data-testid="login-submit-btn"
+          type="submit"
+          disabled={ disabled }
+          className="btn mb-3"
+        >
+          Enter
+        </Button>
+      </Form>
+    </div>
   );
 }

@@ -23,26 +23,33 @@ export default function Foods() {
   return (
     <>
       <Header title="Foods" withSearchButton />
-      <ToggleButtonGroup name="categoryBtn">
-        {
-          <ToggleButton
-            type="button"
-            data-testid="All-category-filter"
-            onClick={ handleClickButtonAll }
-          >
-            All
-          </ToggleButton>
-        }
-        {
-          foodCategory.map((category) => (
-            <CategoryButtons
-              key={ category.strCategory }
-              category={ category.strCategory }
-              filter={ FOODS }
-            />
-          ))
-        }
-      </ToggleButtonGroup>
+      <div>
+        <ToggleButtonGroup
+          name="categoryBtn"
+          className="btn-no-outline"
+        >
+          {
+            <ToggleButton
+              type="button"
+              data-testid="All-category-filter"
+              onClick={ handleClickButtonAll }
+              className="btn"
+            >
+              All
+            </ToggleButton>
+          }
+          {
+            foodCategory.map((category) => (
+              <CategoryButtons
+                key={ category.strCategory }
+                category={ category.strCategory }
+                filter={ FOODS }
+                className="btn"
+              />
+            ))
+          }
+        </ToggleButtonGroup>
+      </div>
 
       {
         foodData.map((food, index) => {

@@ -1,4 +1,4 @@
-@media ( max-width : 360 ) and ( max-height : 640 ) {
+@media ( max-width : 360px ) and ( max-height : 640px ) {
 
   body {
     align-items: center;
@@ -6,21 +6,26 @@
   }
 }
 
+@viewport {
+  width: 100vw;
+}
+
+/* Fonte: https://docs.w3cub.com/css/@viewport */
 :root {
 
-  --color-background-lightmode: #fceebf;
+  --bg-light: #fceebf;
 
-  --color-food-dark: #f1651d;
+  --bs-color01: #f1651d;
 
-  --color-food-light: #fea360;
+  --bs-color02: #fea360;
 
-  --color-drink-dark: #0a97b7;
+  --bs-color03: #0a97b7;
 
-  --color-drink-light: #55cfd6;
+  --bs-color04: #55cfd6;
 
-  --color-dark-text: #444;
+  --bs-text01: #444;
 
-  --color-light-text: #f1f1f1;
+  --bs-text02: #f1f1f1;
 }
 
 * {
@@ -29,55 +34,30 @@
   padding: 0;
 }
 
-html, body {
-  background-color: var(--color-background-lightmode);
-  height: 100%;
+/* html {
+  background-color: var(--bg-light);
 }
 
-.background-light {
-  background-color: var(--color-background-lightmode);
-  background-size: cover;
+.bg-light {
+  background-color: var(--bg-light);
 }
 
-.flex {
-  display: flex;
+.bg-color01 {
+  background-color: var(--bs-color01);
 }
 
-.row-wrap {
-  flex-flow: row wrap;
+.bg-color02 {
+  background-color: var(--bs-color02);
 }
 
-.space-around {
-  justify-content: space-around;
+.bg-color03 {
+  background-color: var(--bs-color03);
 }
 
-.col {
-  flex-direction: column;
+.bg-color04 {
+  background-color: var(--bs-color04);
 }
-
-.width-100 {
-  width: 100%;
-}
-
-.height-100 {
-  height: 100%;
-}
-
-.flex-wrap-row {
-  flex-wrap: wrap row;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.height-33 {
-  height: 33.333%;
-}
+*/
 
 /* Formatação abaixo não foi modificada */
 .meals {

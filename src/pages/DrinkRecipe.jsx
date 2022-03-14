@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Image from 'react-bootstrap/Image';
 import { FIRS_SIX } from '../helpers/constants';
 import fetchDrinkRecipe from '../services/fetchDrinkRecipe ';
 import getIngredientesMeasure from '../helpers/getDrinkIngrMeasure';
@@ -49,7 +50,12 @@ export default function DrinkRecipe() {
   if (Object.keys(recipe).length > 0) {
     return (
       <div>
-        <img data-testid="recipe-photo" alt="drink" src={ recipe.strDrinkThumb } />
+        <Image
+          data-testid="recipe-photo"
+          alt="drink"
+          src={ recipe.strDrinkThumb }
+          fluid
+        />
         <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
         {copyMessage.length > 0 && (
           <p>{copyMessage}</p>
@@ -59,16 +65,17 @@ export default function DrinkRecipe() {
           type="button"
           onClick={ share }
         >
-          <img src={ shareIcon } alt="share icon" />
+          <Image src={ shareIcon } alt="share icon" fluid />
         </button>
         <button
           type="button"
           onClick={ () => { handleFavoriteDrink(favorite, setFavorite, recipe); } }
         >
-          <img
+          <Image
             data-testid="favorite-btn"
             src={ favorite ? blackHeartIcon : whiteHeartIcon }
             alt="favorite icon"
+            fluid
           />
         </button>
         <p data-testid="recipe-category">

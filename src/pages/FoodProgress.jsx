@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Image from 'react-bootstrap/Image';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
 import { isFavorite, handleFavoriteMeal } from '../helpers/setFavorite';
@@ -50,7 +51,7 @@ export default function FoodProgress() {
   if (Object.keys(recipe).length > 0) {
     return (
       <div>
-        <img data-testid="recipe-photo" alt="food" src={ recipe.strMealThumb } />
+        <Image data-testid="recipe-photo" alt="food" src={ recipe.strMealThumb } fluid />
         <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
         {copyMessage.length > 0 && (
           <p>{copyMessage}</p>
@@ -60,16 +61,17 @@ export default function FoodProgress() {
           data-testid="share-btn"
           type="button"
         >
-          <img src={ shareIcon } alt="share icon" />
+          <Image src={ shareIcon } alt="share icon" fluid />
         </button>
         <button
           type="button"
           onClick={ () => { handleFavoriteMeal(favorite, setFavorite, recipe); } }
         >
-          <img
+          <Image
             data-testid="favorite-btn"
             src={ favorite ? blackHeartIcon : whiteHeartIcon }
             alt="favorite icon"
+            fluid
           />
         </button>
         <p data-testid="recipe-category">
