@@ -4,12 +4,22 @@ import FavCard from '../components/FavCard';
 import AppContext from '../context/context';
 
 export default function Favorite() {
-  const { favoriteData, setFavoriteData } = useContext(AppContext);
+  const { favoriteData,
+    setFavoriteData,
+    storageData,
+    setStorageData,
+  } = useContext(AppContext);
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
     setFavoriteData(favorites);
-  }, [setFavoriteData]);
+    setStorageData(favorites);
+  }, [setFavoriteData, setStorageData]);
+
+  const handleFilter = (type) => {
+    const filter = storageData.filter((item) => item.type === type);
+    return ((type === 'all') ? setFavoriteData(storageData) : setFavoriteData(filter));
+  };
 
   return (
     <>
@@ -17,18 +27,21 @@ export default function Favorite() {
       <button
         type="button"
         data-testid="filter-by-all-btn"
+        onClick={ () => handleFilter('all') }
       >
         All
       </button>
       <button
         type="button"
         data-testid="filter-by-food-btn"
+        onClick={ () => handleFilter('food') }
       >
         Food
       </button>
       <button
         type="button"
         data-testid="filter-by-drink-btn"
+        onClick={ () => handleFilter('drink') }
       >
         Drink
       </button>
