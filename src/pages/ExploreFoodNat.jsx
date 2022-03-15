@@ -33,7 +33,7 @@ export default function ExploreFoodsNat() {
         data-testid="explore-by-nationality-dropdown"
         onChange={ (e) => handleFilter(e.target.value) }
       >
-        <option value="all">All</option>
+        <option value="All" data-testid="All-option">All</option>
         {
           foodNationality.map((nationality) => (
             <option
