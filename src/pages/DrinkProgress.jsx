@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import fetchDrinkRecipe from '../services/fetchDrinkRecipe ';
 import getIngredientesMeasure from '../helpers/getDrinkIngrMeasure';
 import { isFavorite, handleFavoriteDrink } from '../helpers/setFavorite';
+import setDoneStorage from '../helpers/setDone';
 import { handleSelect, setDoneClass, verifyDoneStorage }
 from '../helpers/setDoneIngre';
 import shareIcon from '../images/shareIcon.svg';
@@ -41,6 +42,11 @@ export default function DrinkProgress() {
       setIsDisabled(false);
     } else setIsDisabled(true);
   }, [done, ingrMeasure]);
+
+  const finishRecipe = () => {
+    setDoneStorage(recipe, 'drink');
+    history.push('/done-recipes');
+  };
 
   const share = () => {
     copy(`http://localhost:3000${pathname.split('/in-progress')[0]}`);
@@ -106,7 +112,7 @@ export default function DrinkProgress() {
           data-testid="finish-recipe-btn"
           type="button"
           disabled={ isDisabled }
-          onClick={ () => history.push('/done-recipes') }
+          onClick={ () => finishRecipe() }
         >
           Finish
         </button>

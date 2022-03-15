@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
 import { isFavorite, handleFavoriteMeal } from '../helpers/setFavorite';
+import setDoneStorage from '../helpers/setDone';
 import { handleSelect, setDoneClass, verifyDoneStorage }
 from '../helpers/setDoneIngre';
 import shareIcon from '../images/shareIcon.svg';
@@ -45,6 +46,11 @@ export default function FoodProgress() {
   const share = () => {
     copy(`http://localhost:3000${pathname.split('/in-progress')[0]}`);
     setCopyMessage('Link copied!');
+  };
+
+  const finishRecipe = () => {
+    setDoneStorage(recipe, 'food');
+    history.push('/done-recipes');
   };
 
   if (Object.keys(recipe).length > 0) {
@@ -106,7 +112,7 @@ export default function FoodProgress() {
           data-testid="finish-recipe-btn"
           type="button"
           disabled={ isDisabled }
-          onClick={ () => history.push('/done-recipes') }
+          onClick={ () => finishRecipe() }
         >
           Finish
         </button>
