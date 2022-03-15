@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import AppContext from '../context/context';
 
 const copy = require('clipboard-copy');
 
 export default function FavCard({ data }) {
   const [favorite, setFavorite] = useState(true);
   const [copyMessage, setCopyMessage] = useState('');
+  const { favoriteData, setFavoriteData } = useContext(AppContext);
 
   const share = () => {
     copy(`http://localhost:3000/${data.type}s/${data.id}`);
     setCopyMessage('Link copied!');
+  };
+
+  const removeLike = () => {
+    const filterStorage = favoriteData.filter((fav) => (fav.id !== data.id));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(filterStorage));
+    setFavoriteData(filterStorage);
+    setFavorite(!favorite);
   };
 
   return (
@@ -46,7 +55,7 @@ export default function FavCard({ data }) {
         type="button"
         src={ favorite ? blackHeartIcon : whiteHeartIcon }
         data-testid={ `${data.index}-horizontal-favorite-btn` }
-        onClick={ () => setFavorite(!favorite) }
+        onClick={ () => removeLike() }
       >
         <img src={ favorite ? blackHeartIcon : whiteHeartIcon } alt="favorite" />
       </button>

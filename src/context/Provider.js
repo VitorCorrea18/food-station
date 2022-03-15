@@ -12,6 +12,7 @@ const Provider = ({ children }) => {
   const [drinkCategory, setDrinkCategory] = useState([]);
   const [foodRandom, setFoodRandom] = useState([]);
   const [drinkRandom, setDrinkRandom] = useState([]);
+  const [favoriteData, setFavoriteData] = useState([]);
 
   useEffect(() => {
     callFetchInicialData(setFoodData, setDrinkData);
@@ -30,6 +31,8 @@ const Provider = ({ children }) => {
     setFoodRandom,
     drinkRandom,
     setDrinkRandom,
+    favoriteData,
+    setFavoriteData,
   };
 
   return (
