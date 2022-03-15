@@ -1,0 +1,99 @@
+import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import shareIcon from '../images/shareIcon.svg';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import AppContext from '../context/context';
+
+const copy = require('clipboard-copy');
+
+export default function FavCard({ data }) {
+  const [favorite, setFavorite] = useState(true);
+  const [copyMessage, setCopyMessage] = useState('');
+  const { favoriteData, setFavoriteData } = useContext(AppContext);
+
+  const share = () => {
+    copy(`http://localhost:3000/${data.type}s/${data.id}`);
+    setCopyMessage('Link copied!');
+  };
+
+  const removeLike = () => {
+    const filterStorage = favoriteData.filter((fav) => (fav.id !== data.id));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(filterStorage));
+    setFavoriteData(filterStorage);
+    setFavorite(!favorite);
+  };
+
+  const history = useHistory();
+  const redirect = () => {
+    history.push(`/${data.type}s/${data.id}`);
+  };
+
+  return (
+    <>
+      <div
+        onClick={ () => redirect() }
+        onKeyDown={ () => redirect() }
+        role="button"
+        tabIndex={ 0 }
+      >
+        <img
+          style={ { maxWidth: '100px' } }
+          src={ data.image }
+          alt="receita"
+          data-testid={ `${data.index}-horizontal-image` }
+        />
+      </div>
+      <p data-testid={ `${data.index}-horizontal-top-text` }>
+        {`
+          ${data.type === 'food' ? data.nationality : data.alcoholicOrNot}
+          - ${data.category}
+        `}
+
+      </p>
+      <div
+        onClick={ () => redirect() }
+        onKeyDown={ () => redirect() }
+        role="button"
+        tabIndex={ 0 }
+      >
+        <p data-testid={ `${data.index}-horizontal-name` }>{data.name}</p>
+      </div>
+      <p data-testid={ `${data.index}-horizontal-done-date` }>{ }</p>
+      {copyMessage.length > 0 && (
+        <p>{copyMessage}</p>
+      )}
+      <button
+        type="button"
+        data-testid={ `${data.index}-horizontal-share-btn` }
+        src={ shareIcon }
+        onClick={ () => share() }
+      >
+        <img src={ shareIcon } alt="recipe" />
+      </button>
+      <button
+        type="button"
+        src={ favorite ? blackHeartIcon : whiteHeartIcon }
+        data-testid={ `${data.index}-horizontal-favorite-btn` }
+        onClick={ () => removeLike() }
+      >
+        <img src={ favorite ? blackHeartIcon : whiteHeartIcon } alt="favorite" />
+      </button>
+      <p data-testid={ `${data.index}-${data.name}-horizontal-tag` }> </p>
+    </>
+  );
+}
+
+FavCard.propTypes = {
+  data: PropTypes.shape({
+    index: PropTypes.number,
+    name: PropTypes.string,
+    category: PropTypes.string,
+    image: PropTypes.string,
+    type: PropTypes.string,
+    nationality: PropTypes.string,
+    alcoholicOrNot: PropTypes.string,
+    id: PropTypes.string,
+  }).isRequired,
+};
