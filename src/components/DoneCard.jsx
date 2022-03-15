@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes, { string } from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 
@@ -6,25 +7,45 @@ const copy = require('clipboard-copy');
 
 export default function DoneCard({ data, index }) {
   const [copyMessage, setCopyMessage] = useState('');
+  const history = useHistory();
   const share = () => {
     copy(`http://localhost:3000/${data.type}s/${data.id}`);
     setCopyMessage('Link copied!');
   };
 
+  const redirect = () => {
+    history.push(`/${data.type}s/${data.id}`);
+  };
+
   return (
     <div>
-      <img
-        data-testid={ `${index}-horizontal-image` }
-        src={ data.image }
-        alt="recipe"
-      />
+      <div
+        onClick={ () => redirect() }
+        onKeyDown={ () => redirect() }
+        role="button"
+        tabIndex={ 0 }
+      >
+        <img
+          style={ { maxWidth: '100px' } }
+          data-testid={ `${index}-horizontal-image` }
+          src={ data.image }
+          alt="recipe"
+        />
+      </div>
       <h3 data-testid={ `${index}-horizontal-top-text` }>
         {`
           ${data.type === 'food' ? data.nationality : data.alcoholicOrNot}
           - ${data.category}
         `}
       </h3>
-      <h2 data-testid={ `${index}-horizontal-name` }>{data.name}</h2>
+      <div
+        onClick={ () => redirect() }
+        onKeyDown={ () => redirect() }
+        role="button"
+        tabIndex={ 0 }
+      >
+        <h2 data-testid={ `${index}-horizontal-name` }>{data.name}</h2>
+      </div>
       <h4 data-testid={ `${index}-horizontal-done-date` }>
         {`Done in: ${data.doneDate}`}
       </h4>
