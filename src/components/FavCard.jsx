@@ -4,8 +4,17 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
+const copy = require('clipboard-copy');
+
 export default function FavCard({ data }) {
   const [favorite, setFavorite] = useState(true);
+  const [copyMessage, setCopyMessage] = useState('');
+
+  const share = () => {
+    copy(`http://localhost:3000/${data.type}s/${data.id}`);
+    setCopyMessage('Link copied!');
+  };
+
   return (
     <>
       <img
@@ -22,10 +31,14 @@ export default function FavCard({ data }) {
       </p>
       <p data-testid={ `${data.index}-horizontal-name` }>{data.name}</p>
       <p data-testid={ `${data.index}-horizontal-done-date` }>{ }</p>
+      {copyMessage.length > 0 && (
+        <p>{copyMessage}</p>
+      )}
       <button
         type="button"
         data-testid={ `${data.index}-horizontal-share-btn` }
         src={ shareIcon }
+        onClick={ () => share() }
       >
         <img src={ shareIcon } alt="recipe" />
       </button>
@@ -51,5 +64,6 @@ FavCard.propTypes = {
     type: PropTypes.string,
     nationality: PropTypes.string,
     alcoholicOrNot: PropTypes.string,
+    id: PropTypes.string,
   }).isRequired,
 };
