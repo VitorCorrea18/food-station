@@ -16,6 +16,7 @@ import ExploreFoodNat from '../pages/ExploreFoodNat';
 import Profile from '../pages/Profile';
 import DoneRecipe from '../pages/DoneRecipe';
 import Favorite from '../pages/Favorite';
+import notFound from '../pages/notFound';
 
 const Routes = () => (
   <Switch>
@@ -35,6 +36,7 @@ const Routes = () => (
     <Route exact path="/profile" component={ Profile } />
     <Route exact path="/done-recipes" component={ DoneRecipe } />
     <Route exact path="/favorite-recipes" component={ Favorite } />
+    <Route exact path="/explore/drinks/nationalities" component={ notFound } />
   </Switch>
 );
 
