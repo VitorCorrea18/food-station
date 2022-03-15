@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -24,13 +25,26 @@ export default function FavCard({ data }) {
     setFavorite(!favorite);
   };
 
+  const history = useHistory();
+  const redirect = () => {
+    history.push(`/${data.type}s/${data.id}`);
+  };
+
   return (
     <>
-      <img
-        src={ data.image }
-        alt="receita"
-        data-testid={ `${data.index}-horizontal-image` }
-      />
+      <div
+        onClick={ () => redirect() }
+        onKeyDown={ () => redirect() }
+        role="button"
+        tabIndex={ 0 }
+      >
+        <img
+          style={ { maxWidth: '100px' } }
+          src={ data.image }
+          alt="receita"
+          data-testid={ `${data.index}-horizontal-image` }
+        />
+      </div>
       <p data-testid={ `${data.index}-horizontal-top-text` }>
         {`
           ${data.type === 'food' ? data.nationality : data.alcoholicOrNot}
@@ -38,7 +52,14 @@ export default function FavCard({ data }) {
         `}
 
       </p>
-      <p data-testid={ `${data.index}-horizontal-name` }>{data.name}</p>
+      <div
+        onClick={ () => redirect() }
+        onKeyDown={ () => redirect() }
+        role="button"
+        tabIndex={ 0 }
+      >
+        <p data-testid={ `${data.index}-horizontal-name` }>{data.name}</p>
+      </div>
       <p data-testid={ `${data.index}-horizontal-done-date` }>{ }</p>
       {copyMessage.length > 0 && (
         <p>{copyMessage}</p>
