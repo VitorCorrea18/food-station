@@ -2,8 +2,6 @@ import {
   fetchInicialDrinkData, fetchInicialFoodData } from '../services/fetchInicialData';
 import { FIRST_TWELVE } from './constants';
 
-// chama a fetchInicialFoodData e fetchInicialDrinkData
-// para ser usada no useEffect() do provider que não pode receber função assíncrona.
 const callFetchInicialData = async (setFoodData, setDrinkData) => {
   // foods
   const inicialFoodData = await fetchInicialFoodData();
