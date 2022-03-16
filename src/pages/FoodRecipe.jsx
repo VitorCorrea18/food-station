@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
-import { URL_EMBED, FIRS_SIX } from '../helpers/constants';
+import { /* URL_EMBED, */ FIRS_SIX } from '../helpers/constants';
 import { isFavorite, handleFavoriteMeal } from '../helpers/setFavorite';
 import AppContext from '../context/context';
 import SugestCard from '../components/SugestCard';
@@ -90,12 +90,17 @@ export default function FoodRecipe() {
         <p data-testid="instructions">
           {recipe.strInstructions}
         </p>
-        <iframe
+        {/* <iframe
           data-testid="video"
           title="food"
           src={ `${recipe.strYoutube.substring(0, URL_EMBED)}embed/${recipe.strYoutube
             .substring(URL_EMBED, recipe.strYoutube.length)}` }
           allow-same-origin
+        /> */}
+        <embed
+          data-testid="video"
+          title="food"
+          src={ `${recipe.strYoutube.replace('watch?v=', 'v/')}` }
         />
         <h2>Recomendações:</h2>
         <div className="carousel">
