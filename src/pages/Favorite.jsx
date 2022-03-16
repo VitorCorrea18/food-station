@@ -11,7 +11,7 @@ export default function Favorite() {
   } = useContext(AppContext);
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     setFavoriteData(favorites);
     setStorageData(favorites);
   }, [setFavoriteData, setStorageData]);
