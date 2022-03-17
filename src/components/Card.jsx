@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Image from 'react-bootstrap/Image';
 import { FOODS, DRINKS } from '../helpers/constants';
-
 // Quando utilizar o card lembrar de colocar o index junto com os dados da API;
 export default function Card({ data, type }) {
   const history = useHistory();
@@ -20,10 +20,12 @@ export default function Card({ data, type }) {
         role="button"
         tabIndex={ 0 }
       >
-        <img
+        <Image
           src={ data.strMealThumb }
           alt="receita"
           data-testid={ `${data.index}-card-img` }
+          className="mx-2 mt-1"
+          fluid
         />
         <h1 data-testid={ `${data.index}-card-name` }>{data.strMeal}</h1>
       </div>
@@ -38,10 +40,12 @@ export default function Card({ data, type }) {
         role="button"
         tabIndex={ 0 }
       >
-        <img
+        <Image
           src={ data.strDrinkThumb }
           alt="receita"
           data-testid={ `${data.index}-card-img` }
+          className="mx-2 mt-1"
+          fluid
         />
         <h1 data-testid={ `${data.index}-card-name` }>{data.strDrink }</h1>
       </div>
