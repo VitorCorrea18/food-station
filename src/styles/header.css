@@ -1,0 +1,29 @@
+.mainHeader{
+  background-color: var(--bs-color02);
+  border-bottom: 3px solid var(--bs-color01);
+}
+
+.header-title{
+  color: var(--bs-text01);
+  font-weight: bold;
+  font-size: 28px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.profile-icon{
+  width: 35px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1.5px solid  var(--bs-text01);
+  background-color: var(--bg-light);
+}
+
+.search-button{
+  width: 40px;
+  border: none;
+  /* padding: 5px;
+  border-radius: 50%;
+  border: 1.5px solid  var(--bs-text01); */
+  background-color: var(--bg-color02);
+}
