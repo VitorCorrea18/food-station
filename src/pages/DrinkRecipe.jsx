@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
-import { FIRS_SIX } from '../helpers/constants';
+// import { FIRS_SIX } from '../helpers/constants';
 import fetchDrinkRecipe from '../services/fetchDrinkRecipe ';
 import getIngredientesMeasure from '../helpers/getDrinkIngrMeasure';
 import { isFavorite, handleFavoriteDrink } from '../helpers/setFavorite';
 import AppContext from '../context/context';
-import SugestCard from '../components/SugestCard';
+// import SugestCard from '../components/SugestCard';
 import '../styles/recipe.css';
 import verifyRecipe from '../helpers/verifyRecipe';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import CarouselSug from '../components/Carousel';
 
 const copy = require('clipboard-copy');
 
@@ -97,11 +98,14 @@ export default function DrinkRecipe() {
         </p>
         <div className="carousel">
           {
+            foodData.length > 0 && (<CarouselSug data={ foodData } />)
+          }
+          {/* {
             foodData.length > 0
             && (foodData.slice(0, FIRS_SIX).map((sugestion, index) => (
               <SugestCard key={ index } data={ { ...sugestion, index, type: 'food' } } />
             )))
-          }
+          } */}
         </div>
         { verify === 'new' && (
           <button

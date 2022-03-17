@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
 import { PASSWORD_LENGTH, emailRegex } from '../helpers/constants';
 import appLogo from '../images/food-station-logo.png';
+import '../styles/login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -35,20 +36,20 @@ export default function Login() {
   };
 
   return (
-    <div className="">
+    <div className="mainLogin">
+      <Image fluid src={ appLogo } alt="Food Station Logo" />
       <Form
         onSubmit={ handleSubmit }
-        className="d-grid gap-2 col-10 mx-auto"
+        className="d-grid gap-2 col-10 mx-auto formControl"
       >
-        <Image fluid src={ appLogo } alt="Food Station Logo" />
-        <h1>Login</h1>
+        <h1 id="loginTitle">Login</h1>
         <FormControl
           type="email"
           placeholder="Email"
           data-testid="email-input"
           onChange={ (e) => setEmail(e.target.value) }
           value={ email }
-          className="mb-3"
+          className="mb-4"
         />
         <FormControl
           type="password"
@@ -56,13 +57,13 @@ export default function Login() {
           data-testid="password-input"
           onChange={ (e) => setPassword(e.target.value) }
           value={ password }
-          className="mb-3"
+          className="mb-4"
         />
         <Button
           data-testid="login-submit-btn"
           type="submit"
           disabled={ disabled }
-          className="btn mb-3"
+          className="btn mb-3 loginButton"
         >
           Enter
         </Button>
