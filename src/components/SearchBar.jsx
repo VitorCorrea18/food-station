@@ -6,6 +6,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import fetchData from '../services/fetchData';
 import { FIRST_TWELVE } from '../helpers/constants';
 import AppContext from '../context/context';
+import '../styles/searchBar.css';
 
 export default function SearchBar() {
   const { setFoodData, setDrinkData } = useContext(AppContext);
@@ -39,7 +40,7 @@ export default function SearchBar() {
   }, [data, history, pathname, setDrinkData, setFoodData]);
 
   return (
-    <div>
+    <div className="search-content">
       <input
         data-testid="search-input"
         type="text"

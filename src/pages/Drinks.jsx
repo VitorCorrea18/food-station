@@ -22,25 +22,27 @@ export default function Drinks() {
   return (
     <>
       <Header title="Drinks" withSearchButton />
+      <div className="category-button">
+        <ToggleButtonGroup name="categoryBtn">
+          <ToggleButton
+            type="button"
+            data-testid="All-category-filter"
+            onClick={ handleClickButtonAll }
+          >
+            All
+          </ToggleButton>
+          {
+            drinkCategory.map((category) => (
+              <CategoryButtons
+                key={ category.strCategory }
+                category={ category.strCategory }
+                filter={ DRINKS }
+              />
+            ))
+          }
+        </ToggleButtonGroup>
 
-      <ToggleButtonGroup name="categoryBtn">
-        <ToggleButton
-          type="button"
-          data-testid="All-category-filter"
-          onClick={ handleClickButtonAll }
-        >
-          All
-        </ToggleButton>
-        {
-          drinkCategory.map((category) => (
-            <CategoryButtons
-              key={ category.strCategory }
-              category={ category.strCategory }
-              filter={ DRINKS }
-            />
-          ))
-        }
-      </ToggleButtonGroup>
+      </div>
 
       {
         drinkData.map((drink, index) => {

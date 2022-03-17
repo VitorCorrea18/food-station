@@ -9,6 +9,7 @@ import Card from '../components/Card';
 import { FOODS, FIRST_TWELVE } from '../helpers/constants';
 import CategoryButtons from '../components/CategoryButtons';
 import { fetchInicialFoodData } from '../services/fetchInicialData';
+import '../styles/main.css';
 
 export default function Foods() {
   const { foodData, setFoodData, foodCategory } = useContext(AppContext);
@@ -23,7 +24,7 @@ export default function Foods() {
   return (
     <>
       <Header title="Foods" withSearchButton />
-      <div>
+      <div className="category-button">
         <ToggleButtonGroup
           name="categoryBtn"
           className="btn-no-outline"
@@ -33,7 +34,6 @@ export default function Foods() {
               type="button"
               data-testid="All-category-filter"
               onClick={ handleClickButtonAll }
-              className="btn"
             >
               All
             </ToggleButton>
