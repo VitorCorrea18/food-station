@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Image from 'react-bootstrap/Image';
+import CarouselSug from '../components/Carousel';
 import fetchFoodRecipe from '../services/fetchFoodRecipe';
 import getIngredientesMeasure from '../helpers/getFoodIngrMeasure';
-import { /* URL_EMBED, */ FIRS_SIX } from '../helpers/constants';
 import { isFavorite, handleFavoriteMeal } from '../helpers/setFavorite';
 import AppContext from '../context/context';
-import SugestCard from '../components/SugestCard';
 import '../styles/recipe.css';
 import verifyRecipe from '../helpers/verifyRecipe';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const copy = require('clipboard-copy');
 
@@ -49,7 +50,7 @@ export default function FoodRecipe() {
   if (Object.keys(recipe).length > 0) {
     return (
       <div>
-        <img data-testid="recipe-photo" alt="food" src={ recipe.strMealThumb } />
+        <Image data-testid="recipe-photo" alt="food" src={ recipe.strMealThumb } fluid />
         <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
         {copyMessage.length > 0 && (
           <p>{copyMessage}</p>
@@ -59,16 +60,17 @@ export default function FoodRecipe() {
           data-testid="share-btn"
           type="button"
         >
-          <img src={ shareIcon } alt="share icon" />
+          <Image src={ shareIcon } alt="share icon" fluid />
         </button>
         <button
           type="button"
           onClick={ () => { handleFavoriteMeal(favorite, setFavorite, recipe); } }
         >
-          <img
+          <Image
             data-testid="favorite-btn"
             src={ favorite ? blackHeartIcon : whiteHeartIcon }
             alt="favorite icon"
+            fluid
           />
         </button>
         <p data-testid="recipe-category">
@@ -103,11 +105,15 @@ export default function FoodRecipe() {
         <h2>Recomendações:</h2>
         <div className="carousel">
           {
+            drinkData.length > 0 && (<CarouselSug data={ drinkData } />)
+          }
+
+          {/* {
             drinkData.length > 0
             && (drinkData.slice(0, FIRS_SIX).map((sugestion, index) => (
               <SugestCard key={ index } data={ { ...sugestion, index, type: 'drink' } } />
             )))
-          }
+          } */}
         </div>
         { verify === 'new' && (
           <button

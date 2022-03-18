@@ -1,4 +1,66 @@
-.meals {
+/* @media ( max-width : 360px ) and ( max-height : 640px ) {
+
+  body {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@viewport {
+  width: 100vw;
+} */
+
+/* Fonte: https://docs.w3cub.com/css/@viewport */
+/* :root {
+
+  --bg-light: #fceebf;
+
+  --bs-color01: #f1651d;
+
+  --bs-color02: #fea360;
+
+  --bs-color03: #0a97b7;
+
+  --bs-color04: #55cfd6;
+
+  --bs-text01: #444;
+
+  --bs-text02: #f1f1f1;
+} */
+
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} */
+
+/* html {
+  background-color: var(--bg-light);
+}
+
+.bg-light {
+  background-color: var(--bg-light);
+}
+
+.bg-color01 {
+  background-color: var(--bs-color01);
+}
+
+.bg-color02 {
+  background-color: var(--bs-color02);
+}
+
+.bg-color03 {
+  background-color: var(--bs-color03);
+}
+
+.bg-color04 {
+  background-color: var(--bs-color04);
+} */
+
+
+/* Formatação abaixo não foi modificada */
+/* .meals {
   align-items: center;
   background: #0fa36b;
   color: #464646;
@@ -13,7 +75,7 @@
 .rocksGlass {
   animation: shake 1s infinite ease;
   max-height: 80vh;
-}
+} */
 
 /*
 #iceLeft {
@@ -29,7 +91,7 @@
 }
 */
 
-.meals > .logo {
+/* .meals > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
   font-family: Montserrat , sans-serif;
@@ -65,4 +127,4 @@
   100% {
     transform: rotate(-10deg);
   }
-}
+} */

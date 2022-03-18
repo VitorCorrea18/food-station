@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Image from 'react-bootstrap/Image';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { fetchFoodIngreList } from '../services/fetchIngredients';
@@ -42,10 +43,11 @@ export default function ExploreFoodsIng() {
             <h1 data-testid={ `${index}-card-name` }>
               {ingrediente.strIngredient}
             </h1>
-            <img
+            <Image
               alt="ingrediente"
               src={ `https://www.themealdb.com/images/ingredients/${ingrediente.strIngredient}-Small.png` }
               data-testid={ `${index}-card-img` }
+              fluid
             />
           </div>
         ))

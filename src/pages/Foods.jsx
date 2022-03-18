@@ -9,6 +9,7 @@ import Card from '../components/Card';
 import { FOODS, FIRST_TWELVE } from '../helpers/constants';
 import CategoryButtons from '../components/CategoryButtons';
 import { fetchInicialFoodData } from '../services/fetchInicialData';
+import '../styles/main.css';
 
 export default function Foods() {
   const { foodData, setFoodData, foodCategory } = useContext(AppContext);
@@ -23,26 +24,32 @@ export default function Foods() {
   return (
     <>
       <Header title="Foods" withSearchButton />
-      <ToggleButtonGroup name="categoryBtn">
-        {
-          <ToggleButton
-            type="button"
-            data-testid="All-category-filter"
-            onClick={ handleClickButtonAll }
-          >
-            All
-          </ToggleButton>
-        }
-        {
-          foodCategory.map((category) => (
-            <CategoryButtons
-              key={ category.strCategory }
-              category={ category.strCategory }
-              filter={ FOODS }
-            />
-          ))
-        }
-      </ToggleButtonGroup>
+      <div className="category-button">
+        <ToggleButtonGroup
+          name="categoryBtn"
+          className="btn-no-outline"
+        >
+          {
+            <ToggleButton
+              type="button"
+              data-testid="All-category-filter"
+              onClick={ handleClickButtonAll }
+            >
+              All
+            </ToggleButton>
+          }
+          {
+            foodCategory.map((category) => (
+              <CategoryButtons
+                key={ category.strCategory }
+                category={ category.strCategory }
+                filter={ FOODS }
+                className="btn"
+              />
+            ))
+          }
+        </ToggleButtonGroup>
+      </div>
 
       {
         foodData.map((food, index) => {

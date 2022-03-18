@@ -3,7 +3,10 @@ import { useHistory } from 'react-router-dom';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Image from 'react-bootstrap/Image';
 import { PASSWORD_LENGTH, emailRegex } from '../helpers/constants';
+import appLogo from '../images/food-station-logo.png';
+import '../styles/login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -33,29 +36,38 @@ export default function Login() {
   };
 
   return (
-    <Form onSubmit={ handleSubmit }>
-      <h1>Login</h1>
-      <FormControl
-        type="email"
-        placeholder="Email"
-        data-testid="email-input"
-        onChange={ (e) => setEmail(e.target.value) }
-        value={ email }
-      />
-      <FormControl
-        type="password"
-        placeholder="Password"
-        data-testid="password-input"
-        onChange={ (e) => setPassword(e.target.value) }
-        value={ password }
-      />
-      <Button
-        data-testid="login-submit-btn"
-        type="submit"
-        disabled={ disabled }
+    <div className="mainLogin">
+      <Image fluid src={ appLogo } alt="Food Station Logo" />
+      <Form
+        onSubmit={ handleSubmit }
+        className="d-grid gap-2 col-10 mx-auto formControl"
       >
-        Enter
-      </Button>
-    </Form>
+        <h1 id="loginTitle">Login</h1>
+        <FormControl
+          type="email"
+          placeholder="Email"
+          data-testid="email-input"
+          onChange={ (e) => setEmail(e.target.value) }
+          value={ email }
+          className="mb-4"
+        />
+        <FormControl
+          type="password"
+          placeholder="Password"
+          data-testid="password-input"
+          onChange={ (e) => setPassword(e.target.value) }
+          value={ password }
+          className="mb-4"
+        />
+        <Button
+          data-testid="login-submit-btn"
+          type="submit"
+          disabled={ disabled }
+          className="btn mb-3 loginButton"
+        >
+          Enter
+        </Button>
+      </Form>
+    </div>
   );
 }

@@ -27,13 +27,13 @@ export default function CategoryButtons({ category, filter }) {
 
   return (
     <ToggleButton
-      style={ { maxWidth: '70px', fontSize: '12px', wordWrap: 'break-word' } }
+      // style={ { maxWidth: '70px', fontSize: '12px', wordWrap: 'break-word' } }
       type="radio"
       name="categoryBtn"
       data-testid={ `${category}-category-filter` }
       onChange={ handleCategoryClick }
     >
-      { category }
+      { category.replace('/', '/ ') }
     </ToggleButton>
   );
 }
