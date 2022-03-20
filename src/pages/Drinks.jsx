@@ -22,7 +22,7 @@ export default function Drinks() {
   return (
     <main className="background">
       <Header title="Drinks" withSearchButton />
-      <nav className="category-buttons">
+      <nav className="category-buttons drinks">
 
         <ToggleButtonGroup name="categoryBtn">
           <ToggleButton

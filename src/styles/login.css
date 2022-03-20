@@ -3,8 +3,8 @@
 }
 
 #loginTitle{
-  font-size: 30px;
   color: var(--bs-text01);
+  font-size: 30px;
 }
 
 .formControl{
@@ -13,15 +13,15 @@
 }
 
 .loginButton{
+  align-self: center;
   background-color: var(--bs-color03);
-  width: 100px;
   border: none;
   border-radius: 7px;
-  font-weight: bold;
   box-shadow: 0px 4px 4px rgb(82, 82, 82);
-  padding: 5px;
-  align-self: center;
   color: var(--bs-text02);
+  font-weight: bold;
+  padding: 5px;
+  width: 100px;
 }
 
 .loginButton:disabled{

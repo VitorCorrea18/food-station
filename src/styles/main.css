@@ -61,3 +61,7 @@
   font-size: 20px;
   color: var(--bs-text01);
 }
+
+.drinks {
+  height: 170px;
+}
