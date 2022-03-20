@@ -78,3 +78,7 @@ html {
 .bg-color04 {
   background-color: var(--bs-color04);
 }
+/* classe bg-light por algum motivo não funcionou *-* */
+.background {
+  background-color: var(--bg-light);
+}

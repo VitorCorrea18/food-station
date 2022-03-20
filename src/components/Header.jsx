@@ -52,6 +52,7 @@ export default function Header({ title, withSearchButton }) {
                 src={ searchIcon }
                 alt="Search"
                 className="background-light btn-no-outline"
+                data-bs-toggle="collapse"
               />
             </button>
           )

@@ -22,12 +22,12 @@ export default function Foods() {
   const handleClickButtonAll = async () => apiFood();
 
   return (
-    <>
+    <main className="background">
       <Header title="Foods" withSearchButton />
-      <div className="category-button">
+      <nav className="category-buttons">
         <ToggleButtonGroup
           name="categoryBtn"
-          className="btn-no-outline"
+          // className="btn-no-outline"
         >
           {
             <ToggleButton
@@ -49,19 +49,22 @@ export default function Foods() {
             ))
           }
         </ToggleButtonGroup>
-      </div>
+      </nav>
 
-      {
-        foodData.map((food, index) => {
-          const data = { ...food, index };
-          return (
-            <Link key={ food.idMeal } to={ `/foods/${food.idMeal}` }>
-              <Card key={ food.idMeal } data={ data } type={ FOODS } />
-            </Link>
-          );
-        })
-      }
+      <section className="card-section">
+        {
+          foodData.map((food, index) => {
+            const data = { ...food, index };
+            return (
+              <Link key={ food.idMeal } to={ `/foods/${food.idMeal}` }>
+                <Card key={ food.idMeal } data={ data } type={ FOODS } />
+              </Link>
+            );
+          })
+        }
+      </section>
+
       <Footer />
-    </>
+    </main>
   );
 }
