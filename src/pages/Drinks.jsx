@@ -20,9 +20,10 @@ export default function Drinks() {
   const handleClickButtonAll = async () => apiDrink();
 
   return (
-    <>
+    <main className="background">
       <Header title="Drinks" withSearchButton />
-      <div className="category-button">
+      <nav className="category-buttons drinks">
+
         <ToggleButtonGroup name="categoryBtn">
           <ToggleButton
             type="button"
@@ -42,19 +43,22 @@ export default function Drinks() {
           }
         </ToggleButtonGroup>
 
-      </div>
+      </nav>
 
-      {
-        drinkData.map((drink, index) => {
-          const data = { ...drink, index };
-          return (
-            <Link key={ drink.idDrink } to={ `/drinks/${drink.idDrink}` }>
-              <Card key={ drink.idDrink } data={ data } type={ DRINKS } />
-            </Link>
-          );
-        })
-      }
+      <section className="card-section">
+        {
+          drinkData.map((drink, index) => {
+            const data = { ...drink, index };
+            return (
+              <Link key={ drink.idDrink } to={ `/drinks/${drink.idDrink}` }>
+                <Card key={ drink.idDrink } data={ data } type={ DRINKS } />
+              </Link>
+            );
+          })
+        }
+      </section>
+
       <Footer />
-    </>
+    </main>
   );
 }

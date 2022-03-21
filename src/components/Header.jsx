@@ -24,14 +24,6 @@ export default function Header({ title, withSearchButton }) {
         className="background-light d-flex flex-row justify-content-around
           align-items-center mainHeader"
       >
-        <Link to="/profile">
-          <Image
-            data-testid="profile-top-btn"
-            src={ profileIcon }
-            alt="Profile"
-            className="profile-icon"
-          />
-        </Link>
         <h1
           data-testid="page-title"
           className="header-title"
@@ -40,22 +32,35 @@ export default function Header({ title, withSearchButton }) {
 
         </h1>
 
-        {
-          withSearchButton && ( // renderização condicional do botão de busca
-            <button
-              type="button"
-              onClick={ handleSearchClick }
-              className="search-button"
-            >
-              <Image
-                data-testid="search-top-btn"
-                src={ searchIcon }
-                alt="Search"
-                className="background-light btn-no-outline"
-              />
-            </button>
-          )
-        }
+        <div className="header-btns">
+          {
+            withSearchButton && ( // renderização condicional do botão de busca
+              <button
+                type="button"
+                onClick={ handleSearchClick }
+                className="search-button"
+              >
+                <Image
+                  data-testid="search-top-btn"
+                  src={ searchIcon }
+                  alt="Search"
+                  className="background-light btn-no-outline"
+                  data-bs-toggle="collapse"
+                />
+              </button>
+            )
+          }
+
+          <Link to="/profile">
+            <Image
+              data-testid="profile-top-btn"
+              src={ profileIcon }
+              alt="Profile"
+              className="profile-icon"
+            />
+          </Link>
+
+        </div>
 
       </header>
       {

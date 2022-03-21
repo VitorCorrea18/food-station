@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
 import { PASSWORD_LENGTH, emailRegex } from '../helpers/constants';
@@ -60,14 +59,14 @@ export default function Login() {
           value={ password }
           className="mb-4"
         />
-        <Button
+        <button
           data-testid="login-submit-btn"
           type="submit"
           disabled={ disabled }
-          className="btn mb-3 loginButton"
+          className="loginButton"
         >
           Enter
-        </Button>
+        </button>
       </Form>
     </div>
   );
