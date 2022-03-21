@@ -37,30 +37,38 @@
 
 .card-section {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around
+}
+
+.link-card{
+  width: 45%;
+  margin: 2% auto;
 }
 
 .main-card {
-  background: var(--bs-color04);
-  border-radius: 5px;
+  background-color: var(--bg-light);
+  border: 2px solid var(--bs-color02);
+  /* background: var(--bs-color02); */
+  border-radius: 0.5em;
   box-shadow: 5px 5px 4px #686767;
   display: flex;
   flex-direction: column;
-  height: 190px;
-  margin: 15px;
-  width: 150px;
 }
 
 .main-card-img {
   align-self: center;
-  border-radius: 5px;
-  width: 140px;
+  border-radius: 0.5em;
+  width: 85%;
 }
 
 .main-card-title {
   color: var(--bs-text01);
   font-size: 20px;
   padding: 5px;
+  text-align: center;
 }
 
 .drinks {

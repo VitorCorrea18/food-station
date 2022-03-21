@@ -56,7 +56,11 @@ export default function Foods() {
           foodData.map((food, index) => {
             const data = { ...food, index };
             return (
-              <Link key={ food.idMeal } to={ `/foods/${food.idMeal}` }>
+              <Link
+                key={ food.idMeal }
+                to={ `/foods/${food.idMeal}` }
+                className="link-card"
+              >
                 <Card key={ food.idMeal } data={ data } type={ FOODS } />
               </Link>
             );

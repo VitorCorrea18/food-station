@@ -50,7 +50,11 @@ export default function Drinks() {
           drinkData.map((drink, index) => {
             const data = { ...drink, index };
             return (
-              <Link key={ drink.idDrink } to={ `/drinks/${drink.idDrink}` }>
+              <Link
+                key={ drink.idDrink }
+                to={ `/drinks/${drink.idDrink}` }
+                className="link-card"
+              >
                 <Card key={ drink.idDrink } data={ data } type={ DRINKS } />
               </Link>
             );

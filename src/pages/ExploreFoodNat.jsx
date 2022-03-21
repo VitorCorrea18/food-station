@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { fetchNationality } from '../services/fetchNationality';
 import applyNationalityFilter from '../helpers/applyNationalityFilter';
 import { FOODS } from '../helpers/constants';
+import '../styles/explorar.css';
 
 export default function ExploreFoodsNat() {
   const [foodNationality, setFoodNationalities] = useState([]);
@@ -26,9 +27,10 @@ export default function ExploreFoodsNat() {
   };
 
   return (
-    <>
+    <div className="main-explore">
       <Header title="Explore Nationalities" withSearchButton />
       <select
+        className="select-nationality"
         name="nationalities"
         data-testid="explore-by-nationality-dropdown"
         onChange={ (e) => handleFilter(e.target.value) }
@@ -46,17 +48,23 @@ export default function ExploreFoodsNat() {
           ))
         }
       </select>
-      {
-        foodData.map((food, index) => {
-          const data = { ...food, index };
-          return (
-            <Link key={ food.idMeal } to={ `/foods/${food.idMeal}` }>
-              <Card key={ food.idMeal } data={ data } type={ FOODS } />
-            </Link>
-          );
-        })
-      }
+      <div className="explore-ingcard-content">
+        {
+          foodData.map((food, index) => {
+            const data = { ...food, index };
+            return (
+              <Link
+                key={ food.idMeal }
+                to={ `/foods/${food.idMeal}` }
+                className="link-card"
+              >
+                <Card key={ food.idMeal } data={ data } type={ FOODS } />
+              </Link>
+            );
+          })
+        }
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
