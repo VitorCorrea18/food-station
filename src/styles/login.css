@@ -1,4 +1,4 @@
-.mainLogin{
+.mainLogin {
   background-color: var(--bg-light);
 }
 
@@ -7,24 +7,24 @@
   font-size: 30px;
 }
 
-.formControl{
+.formControl {
   display: flex;
   flex-direction: column;
 }
 
-.loginButton{
+.loginButton {
   align-self: center;
   background-color: var(--bs-color03);
   border: none;
   border-radius: 7px;
-  box-shadow: 0px 4px 4px rgb(82, 82, 82);
+  box-shadow: 1px 4px 4px rgb(82, 82, 82);
   color: var(--bs-text02);
-  font-weight: bold;
+  font-weight: 600;
   padding: 5px;
   width: 100px;
 }
 
-.loginButton:disabled{
+.loginButton:disabled {
   opacity: 0.4;
 }
 
