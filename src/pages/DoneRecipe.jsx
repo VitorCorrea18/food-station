@@ -19,7 +19,7 @@ export default function DoneRecipe() {
   };
 
   return (
-    <>
+    <div className="main-done">
       <Header title="Done Recipes" withSearchButton={ false } />
       <div className="button-content">
         <button
@@ -52,7 +52,7 @@ export default function DoneRecipe() {
           <DoneCard key={ recipe.id } data={ recipe } index={ index } />
         ))}
       </div>
-    </>
+    </div>
 
   );
 }

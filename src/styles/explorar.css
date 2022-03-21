@@ -1,0 +1,22 @@
+.main-explore{
+  background-color: var(--bg-light);;
+}
+
+.explore-button-content{
+  width: 90%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.explorar-button{
+  font-size: 24px;
+  background-color: var(--bg-light);
+  border: 2px solid var(--bs-color02);
+  border-radius: 5%;
+  color: var(--bs-text01);
+  box-shadow: 1px 4px 10px rgb(114, 114, 114);
+  margin: 30px 10px;
+  padding: 10px;
+}
