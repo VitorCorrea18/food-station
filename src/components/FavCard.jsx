@@ -15,7 +15,8 @@ export default function FavCard({ data }) {
 
   const share = () => {
     copy(`http://localhost:3000/${data.type}s/${data.id}`);
-    setCopyMessage('Link copied!');
+    if (copyMessage.length > 0) setCopyMessage('');
+    else setCopyMessage('Link copied!');
   };
 
   const removeLike = () => {
@@ -31,8 +32,9 @@ export default function FavCard({ data }) {
   };
 
   return (
-    <>
+    <div className="main-done-card">
       <div
+        className="image-content"
         onClick={ () => redirect() }
         onKeyDown={ () => redirect() }
         role="button"
@@ -45,43 +47,51 @@ export default function FavCard({ data }) {
           data-testid={ `${data.index}-horizontal-image` }
         />
       </div>
-      <p data-testid={ `${data.index}-horizontal-top-text` }>
-        {`
+      <div className="info-content">
+        <div className="horizontal-data">
+          <h3 data-testid={ `${data.index}-horizontal-top-text` } className="top-text">
+            {`
           ${data.type === 'food' ? data.nationality : data.alcoholicOrNot}
           - ${data.category}
         `}
-
-      </p>
-      <div
-        onClick={ () => redirect() }
-        onKeyDown={ () => redirect() }
-        role="button"
-        tabIndex={ 0 }
-      >
-        <p data-testid={ `${data.index}-horizontal-name` }>{data.name}</p>
+          </h3>
+          {copyMessage.length > 0 && (
+            <p>{copyMessage}</p>
+          )}
+          <button
+            type="button"
+            data-testid={ `${data.index}-horizontal-share-btn` }
+            src={ shareIcon }
+            onClick={ () => share() }
+            className="share-button"
+          >
+            <img src={ shareIcon } alt="recipe" />
+          </button>
+          <button
+            type="button"
+            src={ favorite ? blackHeartIcon : whiteHeartIcon }
+            data-testid={ `${data.index}-horizontal-favorite-btn` }
+            onClick={ () => removeLike() }
+            className="share-button"
+          >
+            <img src={ favorite ? blackHeartIcon : whiteHeartIcon } alt="favorite" />
+          </button>
+        </div>
+        <div
+          onClick={ () => redirect() }
+          onKeyDown={ () => redirect() }
+          role="button"
+          tabIndex={ 0 }
+        >
+          <h2
+            data-testid={ `${data.index}-horizontal-name` }
+            className="recipe-text"
+          >
+            {data.name}
+          </h2>
+        </div>
       </div>
-      <p data-testid={ `${data.index}-horizontal-done-date` }>{ }</p>
-      {copyMessage.length > 0 && (
-        <p>{copyMessage}</p>
-      )}
-      <button
-        type="button"
-        data-testid={ `${data.index}-horizontal-share-btn` }
-        src={ shareIcon }
-        onClick={ () => share() }
-      >
-        <img src={ shareIcon } alt="recipe" />
-      </button>
-      <button
-        type="button"
-        src={ favorite ? blackHeartIcon : whiteHeartIcon }
-        data-testid={ `${data.index}-horizontal-favorite-btn` }
-        onClick={ () => removeLike() }
-      >
-        <img src={ favorite ? blackHeartIcon : whiteHeartIcon } alt="favorite" />
-      </button>
-      <p data-testid={ `${data.index}-${data.name}-horizontal-tag` }> </p>
-    </>
+    </div>
   );
 }
 
