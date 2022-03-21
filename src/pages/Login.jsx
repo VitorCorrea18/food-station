@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
 import { PASSWORD_LENGTH, emailRegex } from '../helpers/constants';
-import appLogo from '../images/food-station-logo.png';
+import appLogo from '../images/food-station-logo-final.png';
 import '../styles/login.css';
 
 export default function Login() {
@@ -38,6 +38,7 @@ export default function Login() {
   return (
     <div className="mainLogin">
       <Image fluid src={ appLogo } alt="Food Station Logo" />
+      <h1>FoodStation</h1>
       <Form
         onSubmit={ handleSubmit }
         className="d-grid gap-2 col-10 mx-auto formControl"

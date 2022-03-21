@@ -1,6 +1,7 @@
 .mainHeader{
   background-color: var(--bs-color02);
   border-bottom: 3px solid var(--bs-color01);
+  margin-bottom: 10px;
 }
 
 .header-title{
