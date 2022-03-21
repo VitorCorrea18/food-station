@@ -11,7 +11,6 @@ import verifyRecipe from '../helpers/verifyRecipe';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const copy = require('clipboard-copy');
 

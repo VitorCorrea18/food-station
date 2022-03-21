@@ -11,6 +11,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../styles/inProgress.css';
+import '../styles/recipe.css';
 
 const copy = require('clipboard-copy');
 
@@ -51,44 +52,58 @@ export default function DrinkProgress() {
 
   const share = () => {
     copy(`http://localhost:3000${pathname.split('/in-progress')[0]}`);
-    setCopyMessage('Link copied!');
+    if (copyMessage.length > 0) setCopyMessage('');
+    else setCopyMessage('Link copied!');
   };
 
   if (Object.keys(recipe).length > 0) {
     return (
-      <div>
+      <div className="mainRecipe">
         <Image
           data-testid="recipe-photo"
           alt="drink"
           src={ recipe.strDrinkThumb }
           fluid
+          className="recipe-photo"
         />
-        <h1 data-testid="recipe-title">{recipe.strDrink}</h1>
-        {copyMessage.length > 0 && (
-          <p>{copyMessage}</p>
-        )}
-        <button
-          data-testid="share-btn"
-          type="button"
-          onClick={ share }
-        >
-          <Image src={ shareIcon } alt="share icon" fluid />
-        </button>
-        <button
-          type="button"
-          onClick={ () => { handleFavoriteDrink(favorite, setFavorite, recipe); } }
-        >
-          <Image
-            data-testid="favorite-btn"
-            src={ favorite ? blackHeartIcon : whiteHeartIcon }
-            alt="favorite icon"
-            fluid
-          />
-        </button>
-        <p data-testid="recipe-category">
+        <div className="title-content">
+          <h1
+            data-testid="recipe-title"
+            className="recipe-title"
+          >
+            {recipe.strDrink}
+          </h1>
+          <div>
+            {copyMessage.length > 0 && (
+              <p>{copyMessage}</p>
+            )}
+            <button
+              data-testid="share-btn"
+              type="button"
+              onClick={ share }
+              className="action-button"
+            >
+              <Image src={ shareIcon } alt="share icon" fluid />
+            </button>
+            <button
+              type="button"
+              onClick={ () => { handleFavoriteDrink(favorite, setFavorite, recipe); } }
+              className="action-button"
+            >
+              <Image
+                data-testid="favorite-btn"
+                src={ favorite ? blackHeartIcon : whiteHeartIcon }
+                alt="favorite icon"
+                fluid
+              />
+            </button>
+          </div>
+        </div>
+        <p data-testid="recipe-category" className="recipe-category">
           {recipe.strAlcoholic}
         </p>
-        <ul>
+        <h2 className="recipe-subtitle">Ingredients</h2>
+        <ul className="ingredient-list">
           { Object.keys(ingrMeasure).length > 0
           && ingrMeasure.filterIngridients.map((ingredient, index) => (
             <li
@@ -111,11 +126,12 @@ export default function DrinkProgress() {
             </li>
           ))}
         </ul>
-        <p data-testid="instructions">
+        <h2 className="recipe-subtitle">Instructions</h2>
+        <p data-testid="instructions" className="instructions progress-text">
           {recipe.strInstructions}
         </p>
         <button
-          className="fixed-bottom border"
+          className="fixed-bottom border finishButton"
           data-testid="finish-recipe-btn"
           type="button"
           disabled={ isDisabled }
@@ -127,5 +143,5 @@ export default function DrinkProgress() {
       </div>
     );
   }
-  return (<div>loading...</div>);
+  return (<div className="mainRecipe">loading...</div>);
 }

@@ -5,3 +5,17 @@
 .notDone {
   text-decoration: none;
 }
+
+.progress-text{
+  margin-bottom: 8%;
+}
+
+.finishButton{
+  background-color: var(--bs-color01);
+  color: var(--bg-light);
+  font-weight: bold; 
+}
+
+.finishButton:disabled {
+  background-color: rgba(138, 138, 138, 0.561);
+}
