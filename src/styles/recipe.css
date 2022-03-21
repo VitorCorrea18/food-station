@@ -36,7 +36,7 @@
   width: 90%;
   margin: auto;
   font-size: 18px;
-  color: var(--bs-text01);
+  color: rgb(116, 116, 116);
   font-weight: bold;
 }
 
@@ -51,6 +51,7 @@
 .ingredient-list{
   width: 90%;
   margin: auto;
+  line-height: 25px;
 }
 
 .instructions{
@@ -64,4 +65,15 @@
   margin-left: 5%;
   border: 2px solid var(--bs-color01);
   border-radius: 5%;
+}
+
+.starButton{
+  background-color: #55cfd6b7;
+  color: var(--bs-text01);
+  font-weight: bold;
+}
+
+.carousel{
+  width: 95%;
+  margin: 0px auto 10% auto;
 }

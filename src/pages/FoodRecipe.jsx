@@ -139,7 +139,7 @@ export default function FoodRecipe() {
         </div>
         { verify === 'new' && (
           <button
-            className="fixed-bottom border"
+            className="fixed-bottom border starButton"
             data-testid="start-recipe-btn"
             type="button"
             onClick={ startCooking }
@@ -149,7 +149,7 @@ export default function FoodRecipe() {
         )}
         { verify === 'started' && (
           <button
-            className="fixed-bottom border"
+            className="fixed-bottom border starButton"
             data-testid="start-recipe-btn"
             type="button"
             onClick={ startCooking }

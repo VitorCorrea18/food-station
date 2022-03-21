@@ -36,8 +36,15 @@ export default function Login() {
 
   return (
     <div className="mainLogin">
-      <Image fluid src={ appLogo } alt="Food Station Logo" />
-      <h1>FoodStation</h1>
+      <div className="main-image-content">
+        <h1 className="name-title">FoodStation</h1>
+        <Image
+          fluid
+          src={ appLogo }
+          alt="Food Station Logo"
+          className="main-image"
+        />
+      </div>
       <Form
         onSubmit={ handleSubmit }
         className="d-grid gap-2 col-10 mx-auto formControl"
