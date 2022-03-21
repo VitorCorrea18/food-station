@@ -7,6 +7,7 @@ import { fetchDrinkIngreList } from '../services/fetchIngredients';
 import fetchData from '../services/fetchData';
 import AppContext from '../context/context';
 import { FIRST_TWELVE } from '../helpers/constants';
+import '../styles/explorar.css';
 
 export default function ExploreDrinksIng() {
   const { setDrinkData } = useContext(AppContext);
@@ -27,31 +28,34 @@ export default function ExploreDrinksIng() {
     getData();
   }, []);
   return (
-    <>
+    <div className="main-explore">
       <Header title="Explore Ingredients" withSearchButton={ false } />
-      {
-        data.map((ingrediente, index) => (
-          <div
-            key={ ingrediente.strIngredient1 }
-            data-testid={ `${index}-ingredient-card` }
-            onClick={ () => { handleExplore(ingrediente.strIngredient1); } }
-            onKeyDown={ () => { handleExplore(ingrediente.strIngredient1); } }
-            role="button"
-            tabIndex={ 0 }
-          >
-            <h1 data-testid={ `${index}-card-name` }>
-              {ingrediente.strIngredient1}
-            </h1>
-            <Image
-              alt="ingrediente"
-              src={ `https://www.thecocktaildb.com/images/ingredients/${ingrediente.strIngredient1}-Small.png` }
-              data-testid={ `${index}-card-img` }
-              fluid
-            />
-          </div>
-        ))
-      }
+      <div className="explore-ingcard-content">
+        {
+          data.map((ingrediente, index) => (
+            <div
+              key={ ingrediente.strIngredient1 }
+              data-testid={ `${index}-ingredient-card` }
+              onClick={ () => { handleExplore(ingrediente.strIngredient1); } }
+              onKeyDown={ () => { handleExplore(ingrediente.strIngredient1); } }
+              role="button"
+              tabIndex={ 0 }
+              className="explore-ing-card"
+            >
+              <h1 data-testid={ `${index}-card-name` } className="ingr-name">
+                {ingrediente.strIngredient1}
+              </h1>
+              <Image
+                alt="ingrediente"
+                src={ `https://www.thecocktaildb.com/images/ingredients/${ingrediente.strIngredient1}-Small.png` }
+                data-testid={ `${index}-card-img` }
+                fluid
+              />
+            </div>
+          ))
+        }
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }

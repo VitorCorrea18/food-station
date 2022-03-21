@@ -1,5 +1,8 @@
 .main-explore{
-  background-color: var(--bg-light);;
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 .explore-button-content{
@@ -14,9 +17,38 @@
   font-size: 24px;
   background-color: var(--bg-light);
   border: 2px solid var(--bs-color02);
-  border-radius: 5%;
+  border-radius: 1em;
   color: var(--bs-text01);
   box-shadow: 1px 4px 10px rgb(114, 114, 114);
   margin: 30px 10px;
   padding: 10px;
+}
+
+.explore-ingcard-content{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.explore-ing-card{
+  background-color: var(--bg-light);
+  border: 2px solid var(--bs-color02);
+  border-radius: 1.2em;
+  color: var(--bs-text01);
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  padding: 7px;
+  box-shadow: 1px 4px 10px rgb(114, 114, 114);
+  margin: auto;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ingr-name{
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 }
