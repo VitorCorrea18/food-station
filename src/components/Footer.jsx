@@ -5,10 +5,15 @@ import Image from 'react-bootstrap/Image';
 import exploreIcon from '../images/exploreIcon.svg';
 import drinkIcon from '../images/drinkIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
+import '../styles/footer.css';
 
 function Footer() {
   return (
-    <Container className="fixed-bottom border explore-bar" fluid data-testid="footer">
+    <Container
+      className="fixed-bottom border explore-bar main-footer"
+      fluid
+      data-testid="footer"
+    >
       <Row className="py-2">
         <Col className="d-flex justify-content-center">
           <Link to="/drinks">

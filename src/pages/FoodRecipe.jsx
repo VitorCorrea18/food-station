@@ -11,7 +11,6 @@ import verifyRecipe from '../helpers/verifyRecipe';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const copy = require('clipboard-copy');
 
@@ -44,39 +43,58 @@ export default function FoodRecipe() {
 
   const share = () => {
     copy(`http://localhost:3000${pathname}`);
-    setCopyMessage('Link copied!');
+    if (copyMessage.length > 0) setCopyMessage('');
+    else setCopyMessage('Link copied!');
   };
 
   if (Object.keys(recipe).length > 0) {
     return (
-      <div>
-        <Image data-testid="recipe-photo" alt="food" src={ recipe.strMealThumb } fluid />
-        <h1 data-testid="recipe-title">{recipe.strMeal}</h1>
-        {copyMessage.length > 0 && (
-          <p>{copyMessage}</p>
-        )}
-        <button
-          onClick={ share }
-          data-testid="share-btn"
-          type="button"
-        >
-          <Image src={ shareIcon } alt="share icon" fluid />
-        </button>
-        <button
-          type="button"
-          onClick={ () => { handleFavoriteMeal(favorite, setFavorite, recipe); } }
-        >
-          <Image
-            data-testid="favorite-btn"
-            src={ favorite ? blackHeartIcon : whiteHeartIcon }
-            alt="favorite icon"
-            fluid
-          />
-        </button>
-        <p data-testid="recipe-category">
+      <div className="mainRecipe">
+        <Image
+          data-testid="recipe-photo"
+          alt="food"
+          src={ recipe.strMealThumb }
+          fluid
+          className="recipe-photo"
+        />
+        <div className="title-content">
+          <h1
+            className="recipe-title"
+            data-testid="recipe-title"
+          >
+            {recipe.strMeal}
+          </h1>
+          <div>
+            {copyMessage.length > 0 && (
+              <p>{copyMessage}</p>
+            )}
+            <button
+              onClick={ share }
+              data-testid="share-btn"
+              type="button"
+              className="action-button"
+            >
+              <Image src={ shareIcon } alt="share icon" fluid />
+            </button>
+            <button
+              type="button"
+              onClick={ () => { handleFavoriteMeal(favorite, setFavorite, recipe); } }
+              className="action-button"
+            >
+              <Image
+                data-testid="favorite-btn"
+                src={ favorite ? blackHeartIcon : whiteHeartIcon }
+                alt="favorite icon"
+                fluid
+              />
+            </button>
+          </div>
+        </div>
+        <p data-testid="recipe-category" className="recipe-category">
           {recipe.strCategory}
         </p>
-        <ul>
+        <h2 className="recipe-subtitle">Ingredients</h2>
+        <ul className="ingredient-list">
           { Object.keys(ingrMeasure).length > 0
           && ingrMeasure.filterIngridients.map((ingredient, index) => (
             <li
@@ -87,7 +105,8 @@ export default function FoodRecipe() {
             </li>
           ))}
         </ul>
-        <p data-testid="instructions">
+        <h2 className="recipe-subtitle">Instructions</h2>
+        <p data-testid="instructions" className="instructions">
           {recipe.strInstructions}
         </p>
         {/* <iframe
@@ -97,12 +116,14 @@ export default function FoodRecipe() {
             .substring(URL_EMBED, recipe.strYoutube.length)}` }
           allow-same-origin
         /> */}
+        <h2 className="recipe-subtitle">Video</h2>
         <embed
+          className="video-recipe"
           data-testid="video"
           title="food"
           src={ `${recipe.strYoutube.replace('watch?v=', 'v/')}` }
         />
-        <h2>Recomendações:</h2>
+        <h2 className="recipe-subtitle">Sugestions</h2>
         <div className="carousel">
           {
             drinkData.length > 0 && (<CarouselSug data={ drinkData } />)
@@ -117,7 +138,7 @@ export default function FoodRecipe() {
         </div>
         { verify === 'new' && (
           <button
-            className="fixed-bottom border"
+            className="fixed-bottom border starButton"
             data-testid="start-recipe-btn"
             type="button"
             onClick={ startCooking }
@@ -127,7 +148,7 @@ export default function FoodRecipe() {
         )}
         { verify === 'started' && (
           <button
-            className="fixed-bottom border"
+            className="fixed-bottom border starButton"
             data-testid="start-recipe-btn"
             type="button"
             onClick={ startCooking }
@@ -138,5 +159,5 @@ export default function FoodRecipe() {
       </div>
     );
   }
-  return (<div>loading...</div>);
+  return (<div className="mainRecipe">loading...</div>);
 }

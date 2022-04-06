@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
+import { FormControl } from 'react-bootstrap';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import fetchData from '../services/fetchData';
@@ -40,52 +41,68 @@ export default function SearchBar() {
   }, [data, history, pathname, setDrinkData, setFoodData]);
 
   return (
-    <div className="search-content">
-      <input
-        data-testid="search-input"
-        type="text"
-        value={ search }
-        onChange={ (e) => setSearch(e.target.value) }
-      />
-      <ToggleButtonGroup name="options">
-        <ToggleButton
-          value="i"
-          data-testid="ingredient-search-radio"
-          type="radio"
-          name="options"
-          checked={ false }
-          onChange={ (e) => setSearchType(e.target.value) }
+    <section className="search-content">
+
+      <div className="input-group mb-3 search-input-group">
+        <FormControl
+          type="text"
+          data-testid="search-input"
+          className="form-control search-input"
+          placeholder="Type here your search"
+          aria-label="Type here your search"
+          aria-describedby="button-addon2"
+          value={ search }
+          onChange={ (e) => setSearch(e.target.value) }
+        />
+        <button
+          className="search-btn"
+          data-testid="exec-search-btn"
+          type="submit"
+          id="button-addon2"
+          onClick={ handleSearch }
         >
-          Ingredient
-        </ToggleButton>
-        <ToggleButton
-          value="s"
-          data-testid="name-search-radio"
-          type="radio"
-          name="options"
-          checked={ false }
-          onChange={ (e) => setSearchType(e.target.value) }
-        >
-          Name
-        </ToggleButton>
-        <ToggleButton
-          value="f"
-          data-testid="first-letter-search-radio"
-          type="radio"
-          name="options"
-          checked={ false }
-          onChange={ (e) => setSearchType(e.target.value) }
-        >
-          First Letter
-        </ToggleButton>
-      </ToggleButtonGroup>
-      <Button
-        data-testid="exec-search-btn"
-        type="submit"
-        onClick={ handleSearch }
-      >
-        Search
-      </Button>
-    </div>
+          Search
+        </button>
+      </div>
+
+      <nav className="search-filter-nav">
+        <ToggleButtonGroup name="options">
+          <ToggleButton
+            className="search-radio" // apenas um teste...
+            value="i"
+            data-testid="ingredient-search-radio"
+            type="radio"
+            name="options"
+            checked={ false }
+            onChange={ (e) => setSearchType(e.target.value) }
+          >
+            Ingredient
+          </ToggleButton>
+          <ToggleButton
+            className="search-radio" // apenas um teste...
+            value="s"
+            data-testid="name-search-radio"
+            type="radio"
+            name="options"
+            checked={ false }
+            onChange={ (e) => setSearchType(e.target.value) }
+          >
+            Name
+          </ToggleButton>
+          <ToggleButton
+            className="search-radio" // apenas um teste...
+            value="f"
+            data-testid="first-letter-search-radio"
+            type="radio"
+            name="options"
+            checked={ false }
+            onChange={ (e) => setSearchType(e.target.value) }
+          >
+            First Letter
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </nav>
+
+    </section>
   );
 }

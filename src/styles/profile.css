@@ -1,0 +1,25 @@
+.main-profile{
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.email-text{
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  word-wrap:break-word;
+  color: var(--bs-text01);
+}
+
+.profile-button{
+  font-size: 24px;
+  background-color: var(--bg-light);
+  border: 2px solid var(--bs-color02);
+  border-radius: 1em;
+  color: var(--bs-text01);
+  box-shadow: 1px 4px 10px rgb(114, 114, 114);
+  margin: 30px 10px;
+  padding: 10px;
+}

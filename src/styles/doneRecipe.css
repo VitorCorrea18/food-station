@@ -1,0 +1,80 @@
+.main-done{
+  background-color: var(--bg-light); 
+}
+
+.button-content {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3%
+}
+
+.filter-button{
+  width: 30%;
+  background-color: var(--bg-light);
+  border: 1.5px solid var(--bs-color02);
+  border-radius: 2em;
+  color: var(--bs-text01);
+}
+
+.done-card{
+  width: 90%;
+  margin: auto;
+}
+
+.main-done-card{
+  background-color: var(--bg-light);
+  border: 2px solid var(--bs-color02);
+  border-radius: 1.2em;
+  color: var(--bs-text01);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 7px;
+  box-shadow: 1px 4px 10px rgb(114, 114, 114);
+  margin-bottom: 10px;
+}
+
+.image-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  border-radius: 5%;
+}
+
+.info-content{
+  width: 60%;
+}
+
+.horizontal-data{
+  display: flex;
+}
+.top-text{
+  font-size: 16px;
+  width: 70%;
+}
+
+.recipe-text{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.done-date{
+  font-size: 14px;
+}
+
+.share-button{
+  border: none;
+  background-color: var(--bg-light);
+}
+
+.span-content{
+  width: 100%;
+}
+
+.span-tag{
+  background-color: var(--bs-color02);
+  border-radius: 2em;
+  padding: 2%;
+  margin: 1%;
+}

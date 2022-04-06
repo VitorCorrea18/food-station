@@ -7,6 +7,7 @@ import { fetchFoodIngreList } from '../services/fetchIngredients';
 import fetchData from '../services/fetchData';
 import AppContext from '../context/context';
 import { FIRST_TWELVE } from '../helpers/constants';
+import '../styles/explorar.css';
 
 export default function ExploreFoodsIng() {
   const { setFoodData } = useContext(AppContext);
@@ -28,31 +29,34 @@ export default function ExploreFoodsIng() {
   }, []);
 
   return (
-    <>
+    <div className="main-explore">
       <Header title="Explore Ingredients" withSearchButton={ false } />
-      {
-        data.map((ingrediente, index) => (
-          <div
-            key={ ingrediente.idIngredient }
-            data-testid={ `${index}-ingredient-card` }
-            onClick={ () => { handleExplore(ingrediente.strIngredient); } }
-            onKeyDown={ () => { handleExplore(ingrediente.strIngredient); } }
-            role="button"
-            tabIndex={ 0 }
-          >
-            <h1 data-testid={ `${index}-card-name` }>
-              {ingrediente.strIngredient}
-            </h1>
-            <Image
-              alt="ingrediente"
-              src={ `https://www.themealdb.com/images/ingredients/${ingrediente.strIngredient}-Small.png` }
-              data-testid={ `${index}-card-img` }
-              fluid
-            />
-          </div>
-        ))
-      }
+      <div className="explore-ingcard-content">
+        {
+          data.map((ingrediente, index) => (
+            <div
+              key={ ingrediente.idIngredient }
+              data-testid={ `${index}-ingredient-card` }
+              onClick={ () => { handleExplore(ingrediente.strIngredient); } }
+              onKeyDown={ () => { handleExplore(ingrediente.strIngredient); } }
+              role="button"
+              tabIndex={ 0 }
+              className="explore-ing-card"
+            >
+              <h1 data-testid={ `${index}-card-name` } className="ingr-name">
+                {ingrediente.strIngredient}
+              </h1>
+              <Image
+                alt="ingrediente"
+                src={ `https://www.themealdb.com/images/ingredients/${ingrediente.strIngredient}-Small.png` }
+                data-testid={ `${index}-card-img` }
+                fluid
+              />
+            </div>
+          ))
+        }
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }

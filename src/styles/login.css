@@ -1,35 +1,57 @@
-.mainLogin{
+.mainLogin {
   background-color: var(--bg-light);
 }
 
-#loginTitle{
-  font-size: 30px;
-  color: var(--bs-text01);
+.main-image-content{
+  width: 80%;
+  margin: auto;
+  text-align: center;
 }
 
-.formControl{
+.name-title{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-family: Hurricane , cursive;
+  font-size: 50px;
+  color: var(--bs-color01);
+}
+
+.main-image{
+  width: 70%;
+}
+
+#loginTitle{
+  color: var(--bs-text01);
+  font-size: 26px;
+}
+
+.formControl {
   display: flex;
   flex-direction: column;
+  width: 70%;
 }
 
-.loginButton{
-  background-color: var(--bs-color03) !important;
-  width: 100px;
-  border: none;
-  font-weight: bold;
-  box-shadow: 0px 4px 4px rgb(82, 82, 82);
-  padding: 5px;
+.loginButton {
   align-self: center;
+  background-color: var(--bs-color03);
+  border: none;
+  border-radius: 7px;
+  box-shadow: 1px 4px 4px rgb(82, 82, 82);
+  color: var(--bs-text02);
+  font-weight: 600;
+  padding: 5px;
+  width: 100px;
 }
 
-.loginButton:disabled{
+.loginButton:disabled {
   opacity: 0.4;
 }
 
-.loginButton:hover {
-  background-color: var(--bs-color04) !important;
-}
+/* .loginButton:hover {
+  background-color: var(--bs-color04);
+} */
 
 .loginButton:active {
-  padding: 3px;
+  box-shadow: 0px 2px 4px rgb(82, 82, 82);
+  padding-top: 6px;
 }

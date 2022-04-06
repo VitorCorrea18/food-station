@@ -1,7 +1,19 @@
 .mainCarousel {
-  width: 350px;
+  width: 330px;
+  border: 2px solid var(--bs-color01);
+  border-radius: 5%;
+  text-align: center;
+  padding: 2%;
+}
+
+.carousel-title {
+  color: var(--bs-text01);
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .imgCarousel {
-  width: 170px;
+  width: 150px;
+  border-radius: 5%;
+  padding: 2%;
 }

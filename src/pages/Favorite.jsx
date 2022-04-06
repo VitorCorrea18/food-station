@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import Header from '../components/Header';
 import FavCard from '../components/FavCard';
 import AppContext from '../context/context';
+import '../styles/favorite.css';
 
 export default function Favorite() {
   const { favoriteData,
@@ -22,35 +23,43 @@ export default function Favorite() {
   };
 
   return (
-    <>
+    <div className="main-favorite">
       <Header title="Favorite Recipes" withSearchButton={ false } />
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        onClick={ () => handleFilter('all') }
-      >
-        All
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-food-btn"
-        onClick={ () => handleFilter('food') }
-      >
-        Food
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        onClick={ () => handleFilter('drink') }
-      >
-        Drink
-      </button>
-      {favoriteData.map((fav, index) => {
-        const data = { ...fav, index };
-        return (
-          <FavCard key={ fav.id } data={ data } />
-        );
-      })}
-    </>
+      <div className="button-content">
+
+        <button
+          type="button"
+          data-testid="filter-by-all-btn"
+          onClick={ () => handleFilter('all') }
+          className="filter-button"
+        >
+          All
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-food-btn"
+          onClick={ () => handleFilter('food') }
+          className="filter-button"
+        >
+          Food
+        </button>
+        <button
+          type="button"
+          data-testid="filter-by-drink-btn"
+          onClick={ () => handleFilter('drink') }
+          className="filter-button"
+        >
+          Drink
+        </button>
+      </div>
+      <div className="done-card">
+        {favoriteData.map((fav, index) => {
+          const data = { ...fav, index };
+          return (
+            <FavCard key={ fav.id } data={ data } />
+          );
+        })}
+      </div>
+    </div>
   );
 }

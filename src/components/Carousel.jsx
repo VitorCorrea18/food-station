@@ -23,7 +23,7 @@ export default function CarouselSug({ data }) {
           role="button"
           tabIndex={ 0 }
         >
-          <h1>{data[0].strDrink || data[0].strMeal}</h1>
+          <h1 className="carousel-title">{data[0].strDrink || data[0].strMeal}</h1>
           <img
             className="imgCarousel"
             src={ data[0].strDrinkThumb || data[0].strMealThumb }
@@ -37,7 +37,7 @@ export default function CarouselSug({ data }) {
           role="button"
           tabIndex={ 0 }
         >
-          <h1>{data[1].strDrink || data[1].strMeal}</h1>
+          <h1 className="carousel-title">{data[1].strDrink || data[1].strMeal}</h1>
           <img
             className="imgCarousel"
             src={ data[1].strDrinkThumb || data[1].strMealThumb }
@@ -53,7 +53,7 @@ export default function CarouselSug({ data }) {
           role="button"
           tabIndex={ 0 }
         >
-          <h1>{data[2].strDrink || data[2].strMeal}</h1>
+          <h1 className="carousel-title">{data[2].strDrink || data[2].strMeal}</h1>
           <img
             className="imgCarousel"
             src={ data[2].strDrinkThumb || data[2].strMealThumb }
@@ -67,7 +67,7 @@ export default function CarouselSug({ data }) {
           role="button"
           tabIndex={ 0 }
         >
-          <h1>{data[3].strDrink || data[3].strMeal}</h1>
+          <h1 className="carousel-title">{data[3].strDrink || data[3].strMeal}</h1>
           <img
             className="imgCarousel"
             src={ data[3].strDrinkThumb || data[3].strMealThumb }
@@ -83,7 +83,7 @@ export default function CarouselSug({ data }) {
           role="button"
           tabIndex={ 0 }
         >
-          <h1>{data[4].strDrink || data[4].strMeal}</h1>
+          <h1 className="carousel-title">{data[4].strDrink || data[4].strMeal}</h1>
           <img
             className="imgCarousel"
             src={ data[4].strDrinkThumb || data[4].strMealThumb }
@@ -97,7 +97,7 @@ export default function CarouselSug({ data }) {
           role="button"
           tabIndex={ 0 }
         >
-          <h1>{data[5].strDrink || data[5].strMeal}</h1>
+          <h1 className="carousel-title">{data[5].strDrink || data[5].strMeal}</h1>
           <img
             className="imgCarousel"
             src={ data[5].strDrinkThumb || data[5].strMealThumb }

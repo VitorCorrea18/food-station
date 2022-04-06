@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
 import { PASSWORD_LENGTH, emailRegex } from '../helpers/constants';
-import appLogo from '../images/food-station-logo.png';
+import appLogo from '../images/food-station-logo-final.png';
 import '../styles/login.css';
 
 export default function Login() {
@@ -37,7 +36,15 @@ export default function Login() {
 
   return (
     <div className="mainLogin">
-      <Image fluid src={ appLogo } alt="Food Station Logo" />
+      <div className="main-image-content">
+        <h1 className="name-title">FoodStation</h1>
+        <Image
+          fluid
+          src={ appLogo }
+          alt="Food Station Logo"
+          className="main-image"
+        />
+      </div>
       <Form
         onSubmit={ handleSubmit }
         className="d-grid gap-2 col-10 mx-auto formControl"
@@ -59,14 +66,14 @@ export default function Login() {
           value={ password }
           className="mb-4"
         />
-        <Button
+        <button
           data-testid="login-submit-btn"
           type="submit"
           disabled={ disabled }
-          className="btn mb-3 loginButton"
+          className="loginButton"
         >
           Enter
-        </Button>
+        </button>
       </Form>
     </div>
   );

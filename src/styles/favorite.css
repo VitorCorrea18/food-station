@@ -1,0 +1,9 @@
+.main-favorite{
+  background-color: var(--bg-light); 
+}
+
+.button-content {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3%
+}
