@@ -3,7 +3,16 @@
   flex-wrap: wrap;
 }
 
-.btn-primary {
+.category-nav {
+  background: var(--bs-color02);
+  height: 120px;
+  padding: 5px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-primary {      /*Botões de filtro e categoria */
   align-items: center;
   background-color: var(--bg-light);
   border: 1.5px solid var(--bs-color02);
@@ -14,7 +23,7 @@
   margin-right: 5px;
   margin-top: 15px;
   padding: 5px;
-  width: 90px;
+  width: 100px;
 }
 
 .btn-primary:hover {
@@ -29,10 +38,8 @@
   border-color: none ! important;
 }
 
-.category-buttons {
-  background: var(--bs-color02);
-  height: 120px;
-  padding: 5px;
+.drinks {               /* category nav drinks */
+height: 170px;
 }
 
 .card-section {
@@ -43,7 +50,7 @@
   justify-content: space-around
 }
 
-.link-card{
+.link-card{            /* Os Cards estão dentro de um Link */
   width: 45%;
   margin: 2% auto;
 }
@@ -71,10 +78,6 @@
   text-align: center;
 }
 
-.drinks {
-  height: 170px;
-}
-
 .main-card:hover {
   box-shadow: 2px 2px 3px #686767;
   padding: 3px;
@@ -82,4 +85,94 @@
 
 .main-card:active {
   box-shadow: 0px 0px 0px #686767;
+}
+
+@media screen and (min-width: 1040px) and (max-width: 1700px) {
+  
+  .btn-primary {          /*Botões de filtro e categoria */
+    margin-right: 15px;
+    width: 25%;
+  }
+  
+  .category-nav {
+    padding: 5px;
+    height: 100px;
+  }
+
+  .btn-primary {      /*Botões de filtro e categoria */
+    margin-right: 15px;
+    margin-top: 25px;
+    padding: 5px;
+    width: 150px;
+  }
+  
+  
+  .drinks {               /* category nav drinks */
+    height: 120px;
+  }
+
+  .card-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .link-card{            /* Os Cards estão dentro de um Link */
+    width: 15%;
+    margin: 2% auto;
+  }
+  
+}
+
+@media screen and (min-width: 1700px) {
+  .btn-primary {      /*Botões de filtro e categoria */
+    margin-right: 15px;
+    margin-top: 25px;
+    padding: 5px;
+    width: 150px;
+  }
+  
+  
+  .category-nav {
+    padding: 25px;
+    height: 110px;
+  }
+  
+  .drinks {               /* category nav drinks */
+     height: 110px;
+   }
+  
+  .card-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+    .link-card{            /* Os Cards estão dentro de um Link */
+    width: 13%;
+    margin: 50px 15px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .btn-primary {            /*Botões de filtro e categoria */
+    margin: 10px 15px;
+    padding: 5px;
+    max-width: 13%;
+    height: 50px;
+  }
+  
+  .link-card{            /* Os Cards estão dentro de um Link */
+    width: 15%;
+    margin: 100px 15px;
+  }
+
+  .category-nav {
+    padding: 25px;
+    height: 110px;
+  }
 }

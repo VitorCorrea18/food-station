@@ -24,7 +24,7 @@ export default function Foods() {
   return (
     <main className="background">
       <Header title="Foods" withSearchButton />
-      <nav className="category-buttons">
+      <nav className="category-nav">
         <ToggleButtonGroup
           name="categoryBtn"
           // className="btn-no-outline"

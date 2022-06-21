@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comforter&family=Hurricane&display=swap');
+@import url('./styles/login.css');
+@import url('./styles/main.css');
 
 html {
   box-sizing: border-box;
