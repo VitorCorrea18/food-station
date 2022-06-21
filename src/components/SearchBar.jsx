@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-// import Button from 'react-bootstrap/Button';
 import { FormControl } from 'react-bootstrap';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
@@ -18,14 +17,18 @@ export default function SearchBar() {
   const { location: { pathname } } = history;
 
   const handleSearch = async () => {
-    if (searchType === 'f' && search.length > 1) {
-      global.alert('Your search must have only 1 (one) character');
+    if (searchType && search !== '') {
+      if (searchType === 'f' && search.length > 1) {
+        global.alert('Your search must have only 1 (one) character');
+      } else {
+        const APIData = await fetchData(search, searchType, pathname);
+        setData(APIData);
+      }
+      setSearch('');
+      setSearchType('');
     } else {
-      const APIData = await fetchData(search, searchType, pathname);
-      setData(APIData);
+      global.alert('Select one of the filters and type something');
     }
-    setSearch('');
-    setSearchType('');
   };
 
   useEffect(() => {
