@@ -55,3 +55,37 @@
   box-shadow: 0px 2px 4px rgb(82, 82, 82);
   padding-top: 6px;
 }
+
+@media screen and (min-width: 1040px) and (max-width: 1700px) {
+
+  .main-image-content {
+    width: 50%;
+  }
+
+  .name-title {
+    font-size: 80px;
+  }
+
+  .formControl {
+    max-width: 30%;
+  }
+
+  .loginButton {
+    width: 150px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+
+  .main-image-content {
+    width: 30%;
+  }
+
+  .name-title {
+    font-size: 80px;
+  }
+
+  .formControl {
+    max-width: 20%;
+  }
+}
