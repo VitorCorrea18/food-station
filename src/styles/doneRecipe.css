@@ -1,5 +1,5 @@
 .main-done{
-  background-color: var(--bg-light); 
+  background-color: var(--bg-light);
 }
 
 .button-content {
@@ -77,4 +77,22 @@
   border-radius: 2em;
   padding: 2%;
   margin: 1%;
+}
+
+@media screen and (min-width: 1200px) {
+  .button-content {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter-button{
+    width: 350px;
+  }
+  
+  .done-card{
+    width: 800px;
+    margin: auto;
+  }
 }

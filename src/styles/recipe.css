@@ -1,5 +1,8 @@
 .mainRecipe{
   background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .recipe-photo{
@@ -36,7 +39,7 @@
   width: 90%;
   margin: auto;
   font-size: px;
-  color: rgb(116, 116, 116);
+  color: #747474;
   font-weight: bold;
 }
 
@@ -76,4 +79,62 @@
 .carousel{
   width: 95%;
   margin: 0px auto 10% auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .recipe-photo {
+    max-width: 300px;
+    align-self: center;
+  }
+
+  .title-content {
+    width: 40%;
+  }
+  
+  .recipe-title{
+    font-size: 34px;
+  }
+  
+  
+  .recipe-category{
+    width: 40%;
+    font-size: 19px;
+  }
+  
+  .recipe-subtitle{
+    font-size: 22px;
+    color: var(--bs-text01);
+    font-weight: bold;
+    text-align: center;
+    margin: 3% 3%;
+  }
+  
+  .ingredient-list{
+    width: 50%;
+    text-align: center;
+  }
+  
+  .instructions{
+    width: 50%;
+    text-align: center;
+  }
+  
+  .video-recipe{
+    max-width: 500px;
+    height: 400px;
+    align-self: center;
+    margin-left: 5%;
+    border: 2px solid var(--bs-color01);
+    border-radius: 5%;
+  }
+  
+  .starButton{
+    height: 80px;
+    font-size: 30px;
+  }
+  
+  .carousel{
+    width: 75%;
+    margin: 0px auto 10% auto;
+  }
 }
