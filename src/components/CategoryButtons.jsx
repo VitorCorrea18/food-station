@@ -30,6 +30,7 @@ export default function CategoryButtons({ category, filter }) {
       // style={ { maxWidth: '70px', fontSize: '12px', wordWrap: 'break-word' } }
       type="radio"
       name="categoryBtn"
+      className="category_btn"
       data-testid={ `${category}-category-filter` }
       onChange={ handleCategoryClick }
     >

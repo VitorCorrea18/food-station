@@ -2,18 +2,10 @@
   background: var(--bs-color04);
   display: flex;
   flex-direction: column;
-  height: 130px;
+  height: 200px;
   justify-content: center;
   padding: 5%;
 }
-
-/* .search-input-group {
-  margin-top: 20px;
-} */
-
-/* .search-input:focus {
-  outline: none;
-} */
 
 #button-addon2 {
   background: var(--bs-color02);
@@ -36,3 +28,28 @@
 /* tentei fazer os botões do search bar diferentes dos filtros, mas a unica
 forma que encontramos de contornar o bootstrape foi mudando  o componente do proprio
 bootstrape, porem isso afetou todos os tooglebuttons que agora estão identicos. */
+
+
+@media screen and (min-width: 1040px) {
+  .search-input-group {
+    width: 600px;
+    align-self: center;
+  }
+
+  .search-filter-nav {
+    width: 40%;
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .search-input-group {
+    width: 600px;
+    align-self: center;
+  }
+
+  .search-filter-nav {
+    width: 50%;
+    padding-left: 15%;
+  }
+}

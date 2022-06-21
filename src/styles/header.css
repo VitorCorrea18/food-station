@@ -3,8 +3,6 @@
   border-bottom: 3px solid var(--bs-color04);
   display: flex;
   flex-direction: row;
-  /* gap: 100px; */
-  /* height: 60px; */
 }
 
 .header-title {
@@ -24,8 +22,6 @@
 
 .profile-icon {
   background-color: var(--bs-text02);
-
-  /* border: 1.5px solid  var(--bs-text01); */
   border-radius: 50%;
   box-shadow: 1px 3px 8px rgb(77, 75, 75);
   height: 40px;
@@ -48,4 +44,10 @@
 
 .search-button:active {
   box-shadow: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .header-title {
+    font-size: 70px;
+  } 
 }
