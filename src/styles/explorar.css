@@ -60,3 +60,18 @@
   padding: 3px;
   border-radius: 1em;
 }
+
+@media screen and (min-width: 1200px) {
+  .explore-button-content {
+    max-width: 30%;
+  }
+
+  .explore-ingcard-content {
+    max-width: 80%;
+    align-self: center;
+  }
+
+  .explore-ing-card {
+    max-width: 350px;
+  }
+}

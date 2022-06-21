@@ -12,30 +12,33 @@ export default function ExploreFoods() {
     <>
       <Header title="Explore Foods" withSearchButton={ false } />
       <div className="main-explore ">
-        <button
-          className="explorar-button"
-          type="button"
-          data-testid="explore-by-ingredient"
-          onClick={ () => history.push('/explore/foods/ingredients') }
-        >
-          By Ingredient
-        </button>
-        <button
-          className="explorar-button"
-          type="button"
-          data-testid="explore-by-nationality"
-          onClick={ () => history.push('/explore/foods/nationalities') }
-        >
-          By Nationality
-        </button>
-        <button
-          className="explorar-button"
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ () => history.push(`/foods/${foodRandom[0].idMeal}`) }
-        >
-          Surprise me!
-        </button>
+        <div className="explore-button-content">
+
+          <button
+            className="explorar-button"
+            type="button"
+            data-testid="explore-by-ingredient"
+            onClick={ () => history.push('/explore/foods/ingredients') }
+          >
+            By Ingredient
+          </button>
+          <button
+            className="explorar-button"
+            type="button"
+            data-testid="explore-by-nationality"
+            onClick={ () => history.push('/explore/foods/nationalities') }
+          >
+            By Nationality
+          </button>
+          <button
+            className="explorar-button"
+            type="button"
+            data-testid="explore-surprise"
+            onClick={ () => history.push(`/foods/${foodRandom[0].idMeal}`) }
+          >
+            Surprise me!
+          </button>
+        </div>
       </div>
       <Footer />
     </>
