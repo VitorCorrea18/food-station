@@ -2,7 +2,6 @@
   "name": "recipes-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vitorcorrea18.github.io/recipes-app",
   "engines": {
     "node": "16"
   },
