@@ -13,8 +13,8 @@ The main goal here was to put in practice all we had learned of React developmen
 <br>
 <strong>This App was developed using a mobile first mothodology</strong>
 <br>
-<img src="./recipeApp-login.png" alt='screenshot' width="300">
-<img src="./recipeApp-food.png" alt='screenshot' width="300">
+<img src="./recipeApp-login.png" alt='screenshot' width="300" height="500">
+<img src="./recipeApp-food.png" alt='screenshot' width="300" height="500">
 
 ## Used APIs
 
